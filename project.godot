@@ -19,6 +19,10 @@ config/icon="res://player/playerIdle.png"
 GameManager="*res://autoLoad/gameManager.gd"
 MoveInput="*res://autoLoad/moveInput.gd"
 
+[debug]
+
+shapes/collision/shape_color=Color( 1, 1, 1, 0.419608 )
+
 [display]
 
 window/size/width=341
