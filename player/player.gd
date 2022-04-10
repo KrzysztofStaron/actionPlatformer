@@ -16,6 +16,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var dir := MoveInput.axis("move_left", "move_right")
+	var sprite := $Sprite
+
+	if dir == -1:
+		sprite.flip_h = true
+	elif dir == 1:
+		sprite.flip_h = false
 
 	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
 	velocity.x = move_toward(velocity.x, maxSpeed * dir, step * delta)
