@@ -3,7 +3,7 @@ sidescroller
 platformer
 fight
 ```
-GREEN: sensor
-BLUE: collider
+GREEN: sensor SelfModulate: **#0eff00**
+BLUE: collider SelfModulate: **#ffffff**
 RED: hurtbox
 ```
