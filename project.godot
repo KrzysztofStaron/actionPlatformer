@@ -16,8 +16,8 @@ config/icon="res://player/playerIdle.png"
 
 [autoload]
 
-GameManager="*res://gameManager.gd"
-MoveInput="*res://moveInput.gd"
+GameManager="*res://autoLoad/gameManager.gd"
+MoveInput="*res://autoLoad/moveInput.gd"
 
 [display]
 
