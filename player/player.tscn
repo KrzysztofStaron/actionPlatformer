@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player/playerIdle.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
@@ -30,33 +30,6 @@ animations = [ {
 "speed": 7.0
 } ]
 
-[sub_resource type="Animation" id=12]
-resource_name = "idle"
-length = 0.1
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "idle" ]
-}
-
-[sub_resource type="AnimationNodeAnimation" id=6]
-animation = "idle"
-
-[sub_resource type="AnimationNodeStateMachine" id=4]
-states/idle/node = SubResource( 6 )
-states/idle/position = Vector2( 305, 91 )
-start_node = "idle"
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
-
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
@@ -66,13 +39,5 @@ shape = SubResource( 1 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 11 )
 animation = "idle"
+frame = 1
 playing = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 12 )
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 4 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 5 )
