@@ -7,8 +7,9 @@
 [ext_resource path="res://player/playerJump.png" type="Texture" id=5]
 [ext_resource path="res://player/dust/dust.tscn" type="PackedScene" id=6]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 11 )
+[sub_resource type="CapsuleShape2D" id=24]
+radius = 6.0
+height = 12.0
 
 [sub_resource type="CircleShape2D" id=12]
 radius = 3.0
@@ -553,7 +554,7 @@ vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 self_modulate = Color( 0.0196078, 0.952941, 1, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 24 )
 
 [node name="groundSensor" type="Area2D" parent="."]
 position = Vector2( 0, 11 )
