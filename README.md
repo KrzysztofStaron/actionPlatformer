@@ -15,4 +15,4 @@ RED: hurtbox SelfModulate: #ff0000
     idle - 7<br>
     jump - 10<br>
     falling - 10<br>
-    fall - <b>7</b><br>
+    fall - 7<br>
