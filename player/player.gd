@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var velocity := Vector2.ZERO
 
-export var maxSpeed := 70
+export var maxSpeed := 70.0
 var relativeMaxSpeed : float
 
 export var step := 210
@@ -22,12 +22,11 @@ func update_gronded() -> void:
 		if body.is_in_group("ground"):
 			touchingGround = true
 			break
-	
+
 	grounded = touchingGround
 
 func _ready() -> void:
 	if OS.is_debug_build():
-		# warning-ignore:INTEGER_DIVISION
 		print("speed change: ", maxSpeed/step, "sec")
 
 func _process(delta: float) -> void:
@@ -53,4 +52,3 @@ func _process(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, relativeMaxSpeed * dir, step * delta)
 
 	velocity = move_and_slide(velocity)
-
