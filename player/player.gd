@@ -38,9 +38,11 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("jump") and grounded:
 		animation.play("jump")
 		jumpBlock = true
+
 	elif Input.is_action_just_pressed("swordAtack"):
 		animation.play("swordAtack")
 		atackBlock = true
+
 	elif !grounded:
 		animation.play("falling")
 
