@@ -64,7 +64,7 @@ tracks/3/keys = {
 "values": [ 10, 11, 12 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("playerAnimations:playback_speed")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -74,6 +74,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.7 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:speedMultiplayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.5 ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -128,7 +140,7 @@ tracks/3/keys = {
 "values": [ 7, 8, 9 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("playerAnimations:playback_speed")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -138,6 +150,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 1.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:speedMultiplayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.5 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -193,7 +217,7 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("playerAnimations:playback_speed")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -257,7 +281,7 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("playerAnimations:playback_speed")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -267,6 +291,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 1.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:speedMultiplayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.5 ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -322,7 +358,7 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("playerAnimations:playback_speed")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -399,7 +435,7 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("playerAnimations:playback_speed")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -409,6 +445,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 1.2 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:speedMultiplayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.3 ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -464,7 +512,7 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("playerAnimations:playback_speed")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -485,18 +533,18 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.5 ]
+"values": [ 0.6 ]
 }
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
-speedMultiplayer = 1.0
+step = 250
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
-hframes = 5
+texture = ExtResource( 5 )
+hframes = 4
 vframes = 4
-frame = 17
+frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 self_modulate = Color( 0.0196078, 0.952941, 1, 1 )
@@ -509,8 +557,7 @@ position = Vector2( 0, 11 )
 self_modulate = Color( 0.054902, 1, 0, 1 )
 shape = SubResource( 12 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 2.4
+[node name="playerAnimations" type="AnimationPlayer" parent="."]
 anims/fall = SubResource( 22 )
 anims/falling = SubResource( 23 )
 anims/idle = SubResource( 14 )
@@ -518,3 +565,5 @@ anims/jump = SubResource( 21 )
 anims/run = SubResource( 20 )
 anims/swordAtack = SubResource( 19 )
 anims/walk = SubResource( 18 )
+
+[connection signal="animation_finished" from="playerAnimations" to="." method="_animation_finished"]

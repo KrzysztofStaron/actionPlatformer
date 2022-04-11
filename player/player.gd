@@ -12,38 +12,33 @@ export var maxGravitation := 270
 
 export var jumpHeight := -90
 
-onready var animation = $AnimationPlayer
+onready var animation := $playerAnimations
 var grounded := false
 
-func update_gronded() -> void:
-	var bodies = $groundSensor.get_overlapping_bodies()
-	var touchingGround := false
-	for body in bodies:
-		if body.is_in_group("ground"):
-			touchingGround = true
-			break
-
-	grounded = touchingGround
-
-func _ready() -> void:
-	if OS.is_debug_build():
-		print("speed change: ", maxSpeed/step, "sec")
+var jumpBlock := false
+var landBlock := false
 
 func _process(delta: float) -> void:
-	print(animation.playback_speed)
+	# print(animation.playback_speed)
 	var dir := MoveInput.axis("move_left", "move_right")
-
-	if dir != 0:
-		if Input.is_action_pressed("walk"):
+	if jumpBlock:
+		pass	
+	elif !grounded:
+		animation.play("falling")	
+	else:
+		if dir == 0:
+			animation.play("idle")
+		elif Input.is_action_pressed("walk"):
 			animation.play("walk")
 		else:
 			animation.play("run")
-	else:
-		animation.play("idle")
+
 
 	if Input.is_action_just_pressed("jump"):
 		update_gronded()
 		if grounded:
+			animation.play("jump")
+			jumpBlock = true
 			velocity.y = jumpHeight
 
 	var sprite := $Sprite
@@ -57,3 +52,16 @@ func _process(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, maxSpeed * dir * speedMultiplayer, step * delta)
 
 	velocity = move_and_slide(velocity)
+
+func _animation_finished(name: String) -> void:
+	if name == "jump":
+		jumpBlock = false
+
+func update_gronded() -> void:
+	var bodies = $groundSensor.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("ground"):
+			grounded = true
+			return
+
+	grounded = false
