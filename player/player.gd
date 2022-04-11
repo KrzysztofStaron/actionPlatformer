@@ -11,9 +11,11 @@ export var gravitation := 180
 export var maxGravitation := 270
 
 export var jumpHeight := -90
+export var dust : PackedScene
+export var summonDust := false
 
 onready var animation := $playerAnimations
-var grounded := false
+var grounded := true
 
 var jumpBlock := false
 var landBlock := false
@@ -21,25 +23,38 @@ var landBlock := false
 func _process(delta: float) -> void:
 	# print(animation.playback_speed)
 	var dir := MoveInput.axis("move_left", "move_right")
-	if jumpBlock:
-		pass	
+
+	if summonDust:
+		summonDust = false
+		var newDust := dust.instance()
+		get_node("..").add_child(newDust)
+		newDust.set_global_position(get_global_position() + Vector2(0, 8))
+
+	update_gronded()
+	if jumpBlock or landBlock:
+		pass
+
+	elif Input.is_action_just_pressed("jump") and grounded:
+		animation.play("jump")
+		jumpBlock = true
+
 	elif !grounded:
-		animation.play("falling")	
+		animation.play("falling")
+
+	elif animation.get_current_animation() == "falling" and grounded:
+		landBlock = true
+		print("land")
+		animation.play("land")
+
+	elif dir == 0:
+		animation.play("idle")
+
+	elif Input.is_action_pressed("walk"):
+		animation.play("walk")
+
 	else:
-		if dir == 0:
-			animation.play("idle")
-		elif Input.is_action_pressed("walk"):
-			animation.play("walk")
-		else:
-			animation.play("run")
+		animation.play("run")
 
-
-	if Input.is_action_just_pressed("jump"):
-		update_gronded()
-		if grounded:
-			animation.play("jump")
-			jumpBlock = true
-			velocity.y = jumpHeight
 
 	var sprite := $Sprite
 
@@ -54,8 +69,13 @@ func _process(delta: float) -> void:
 	velocity = move_and_slide(velocity)
 
 func _animation_finished(name: String) -> void:
-	if name == "jump":
-		jumpBlock = false
+	match name:
+		"jump":
+			jumpBlock = false
+			velocity.y = jumpHeight
+		"land":
+			landBlock = false
+
 
 func update_gronded() -> void:
 	var bodies = $groundSensor.get_overlapping_bodies()

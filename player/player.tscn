@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://player/playerIdle.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
 [ext_resource path="res://player/playerRun.png" type="Texture" id=3]
 [ext_resource path="res://player/playerSwordAtack.png" type="Texture" id=4]
 [ext_resource path="res://player/playerJump.png" type="Texture" id=5]
+[ext_resource path="res://player/dust/dust.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 11 )
@@ -12,85 +13,9 @@ extents = Vector2( 6, 11 )
 [sub_resource type="CircleShape2D" id=12]
 radius = 3.0
 
-[sub_resource type="Animation" id=22]
-resource_name = "fall"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 10, 11, 12 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("playerAnimations:playback_speed")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.7 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:speedMultiplayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.5 ]
-}
-
 [sub_resource type="Animation" id=23]
 resource_name = "falling"
-length = 0.4
+length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -134,13 +59,13 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7, 8, 9 ]
+"values": [ 9 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("playerAnimations:playback_speed")
+tracks/4/path = NodePath(".:speedMultiplayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -149,19 +74,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:speedMultiplayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.5 ]
+"values": [ 0.75 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -232,6 +145,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id=21]
 resource_name = "jump"
 length = 0.7
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -290,7 +204,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.0 ]
+"values": [ 2.5 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath(".:speedMultiplayer")
@@ -302,7 +216,95 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.5 ]
+"values": [ 0.1 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:summonDust")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "land"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("playerAnimations:playback_speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.6 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:speedMultiplayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.4 ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -539,12 +541,16 @@ tracks/5/keys = {
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 step = 250
+speedMultiplayer = 0.3
+jumpHeight = -170
+dust = ExtResource( 6 )
+summonDust = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 5 )
 hframes = 4
 vframes = 4
-frame = 6
+frame = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 self_modulate = Color( 0.0196078, 0.952941, 1, 1 )
@@ -558,12 +564,18 @@ self_modulate = Color( 0.054902, 1, 0, 1 )
 shape = SubResource( 12 )
 
 [node name="playerAnimations" type="AnimationPlayer" parent="."]
-anims/fall = SubResource( 22 )
+playback_speed = 1.5
 anims/falling = SubResource( 23 )
 anims/idle = SubResource( 14 )
 anims/jump = SubResource( 21 )
+anims/land = SubResource( 22 )
 anims/run = SubResource( 20 )
 anims/swordAtack = SubResource( 19 )
 anims/walk = SubResource( 18 )
 
+[node name="jumpCooldown" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
 [connection signal="animation_finished" from="playerAnimations" to="." method="_animation_finished"]
+[connection signal="timeout" from="jumpCooldown" to="." method="_on_jumpCooldown_timeout"]
