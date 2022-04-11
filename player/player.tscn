@@ -216,7 +216,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.1 ]
+"values": [ 0.2 ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath(".:summonDust")
@@ -446,7 +446,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.2 ]
+"values": [ 1.4 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath(".:speedMultiplayer")
@@ -541,7 +541,7 @@ tracks/5/keys = {
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 step = 250
-speedMultiplayer = 0.2
+speedMultiplayer = 0.05
 jumpHeight = -170
 dust = ExtResource( 6 )
 summonDust = true
@@ -550,7 +550,6 @@ summonDust = true
 texture = ExtResource( 4 )
 hframes = 5
 vframes = 4
-frame = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 self_modulate = Color( 0.0196078, 0.952941, 1, 1 )
