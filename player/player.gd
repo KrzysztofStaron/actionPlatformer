@@ -19,6 +19,7 @@ var grounded := true
 
 var jumpBlock := false
 var landBlock := false
+var atackBlock := false
 
 func _process(delta: float) -> void:
 	# print(animation.playback_speed)
@@ -31,13 +32,15 @@ func _process(delta: float) -> void:
 		newDust.set_global_position(get_global_position() + Vector2(0, 8))
 
 	update_gronded()
-	if jumpBlock or landBlock:
+	if atackBlock or jumpBlock or landBlock:
 		pass
 
 	elif Input.is_action_just_pressed("jump") and grounded:
 		animation.play("jump")
 		jumpBlock = true
-
+	elif Input.is_action_just_pressed("swordAtack"):
+		animation.play("swordAtack")
+		atackBlock = true
 	elif !grounded:
 		animation.play("falling")
 
@@ -75,6 +78,8 @@ func _animation_finished(name: String) -> void:
 			velocity.y = jumpHeight
 		"land":
 			landBlock = false
+		"swordAtack":
+			atackBlock = false
 
 
 func update_gronded() -> void:
