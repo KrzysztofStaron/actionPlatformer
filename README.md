@@ -18,3 +18,10 @@ RED: hurtbox SelfModulate: #ff0000
     falling - 10
     fall - 7
   ```
+# controls
+```
+  A and D - horizontal
+  Space - jump
+  Ctrl - walk
+  mouse click - atack
+```
