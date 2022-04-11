@@ -8,7 +8,7 @@ BLUE: collider SelfModulate: #05f3ff
 RED: hurtbox SelfModulate: #ff0000
 ```
 
-**animations speed** <br>
+#animations speed in fps
   **1.** Player<br>
   ```
     walk - 12
