@@ -36,29 +36,29 @@ func _process(delta: float) -> void:
 	update_gronded()
 	if atackBlock or jumpBlock or landBlock:
 		pass
-
+	# jump
 	elif Input.is_action_just_pressed("jump") and grounded:
 		animation.play("jump")
 		jumpBlock = true
-
+	# atack
 	elif Input.is_action_just_pressed("swordAtack"):
 		animation.play("swordAtack")
 		atackBlock = true
-
+	# falling
 	elif !grounded:
 		animation.play("falling")
-
+	# land
 	elif animation.get_current_animation() == "falling" and grounded:
 		landBlock = true
 		print("land")
 		animation.play("land")
-
+	# idle
 	elif dir == 0:
 		animation.play("idle")
-
+	# walking
 	elif Input.is_action_pressed("walk"):
 		animation.play("walk")
-
+	# runing
 	else:
 		animation.play("run")
 
