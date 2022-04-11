@@ -573,9 +573,4 @@ anims/run = SubResource( 20 )
 anims/swordAtack = SubResource( 19 )
 anims/walk = SubResource( 18 )
 
-[node name="jumpCooldown" type="Timer" parent="."]
-wait_time = 0.6
-one_shot = true
-
 [connection signal="animation_finished" from="playerAnimations" to="." method="_animation_finished"]
-[connection signal="timeout" from="jumpCooldown" to="." method="_on_jumpCooldown_timeout"]

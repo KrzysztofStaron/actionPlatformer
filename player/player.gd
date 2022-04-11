@@ -27,9 +27,11 @@ func _process(delta: float) -> void:
 
 	if summonDust:
 		summonDust = false
-		var newDust := dust.instance()
-		get_node("..").add_child(newDust)
-		newDust.set_global_position(get_global_position() + Vector2(0, 8))
+
+		if grounded:
+			var newDust := dust.instance()
+			get_node("..").add_child(newDust)
+			newDust.set_global_position(get_global_position() + Vector2(0, 8))
 
 	update_gronded()
 	if atackBlock or jumpBlock or landBlock:
