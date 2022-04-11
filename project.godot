@@ -21,7 +21,7 @@ MoveInput="*res://autoLoad/moveInput.gd"
 
 [debug]
 
-shapes/collision/shape_color=Color( 1, 1, 1, 0.419608 )
+shapes/collision/shape_color=Color( 1, 1, 1, 0.392157 )
 
 [display]
 

@@ -3,16 +3,16 @@ extends KinematicBody2D
 var velocity := Vector2.ZERO
 
 export var maxSpeed := 70.0
-var relativeMaxSpeed : float
 
 export var step := 210
-export var walkMultiplayer := 0.5
+export var speedMultiplayer := 0.5
 
 export var gravitation := 180
 export var maxGravitation := 270
 
 export var jumpHeight := -90
 
+onready var animation = $AnimationPlayer
 var grounded := false
 
 func update_gronded() -> void:
@@ -30,17 +30,22 @@ func _ready() -> void:
 		print("speed change: ", maxSpeed/step, "sec")
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("walk"):
-		relativeMaxSpeed = maxSpeed * walkMultiplayer
+	print(animation.playback_speed)
+	var dir := MoveInput.axis("move_left", "move_right")
+
+	if dir != 0:
+		if Input.is_action_pressed("walk"):
+			animation.play("walk")
+		else:
+			animation.play("run")
 	else:
-		relativeMaxSpeed = maxSpeed
+		animation.play("idle")
 
 	if Input.is_action_just_pressed("jump"):
 		update_gronded()
 		if grounded:
 			velocity.y = jumpHeight
 
-	var dir := MoveInput.axis("move_left", "move_right")
 	var sprite := $Sprite
 
 	if dir == -1:
@@ -49,6 +54,6 @@ func _process(delta: float) -> void:
 		sprite.set_flip_h(false)
 
 	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
-	velocity.x = move_toward(velocity.x, relativeMaxSpeed * dir, step * delta)
+	velocity.x = move_toward(velocity.x, maxSpeed * dir * speedMultiplayer, step * delta)
 
 	velocity = move_and_slide(velocity)
