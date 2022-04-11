@@ -20,6 +20,7 @@ tracks/0/keys = {
 }
 
 [node name="dust" type="Sprite"]
+visible = false
 texture = ExtResource( 2 )
 hframes = 4
 script = ExtResource( 1 )

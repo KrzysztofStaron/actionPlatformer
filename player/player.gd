@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 		if grounded:
 			var newDust := dust.instance()
 			get_node("..").add_child(newDust)
-			newDust.set_global_position(get_global_position() + Vector2(0, 8))
+			newDust.set_global_position(get_global_position() + Vector2(0, 9))
 
 	update_gronded()
 
