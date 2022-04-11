@@ -10,9 +10,11 @@ RED: hurtbox SelfModulate: #ff0000
 
 **animations speed** <br>
   **1.** Player<br>
-    walk - 12<br>
-    run - 24<br>
-    idle - 7<br>
-    jump - 10<br>
-    falling - 10<br>
-    fall - 7<br>
+  ```
+    walk - 12
+    run - 24
+    idle - 7
+    jump - 10
+    falling - 10
+    fall - 7
+  ```
