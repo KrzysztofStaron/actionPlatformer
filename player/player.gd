@@ -27,23 +27,15 @@ func _process(delta: float) -> void:
 
 	if summonDust:
 		summonDust = false
-
 		if grounded:
 			var newDust := dust.instance()
 			get_node("..").add_child(newDust)
 			newDust.set_global_position(get_global_position() + Vector2(0, 8))
 
 	update_gronded()
+
 	if atackBlock or jumpBlock or landBlock:
 		pass
-	# jump
-	elif Input.is_action_just_pressed("jump") and grounded:
-		animation.play("jump")
-		jumpBlock = true
-	# atack
-	elif Input.is_action_just_pressed("swordAtack"):
-		animation.play("swordAtack")
-		atackBlock = true
 	# falling
 	elif !grounded:
 		animation.play("falling")
@@ -62,7 +54,6 @@ func _process(delta: float) -> void:
 	else:
 		animation.play("run")
 
-
 	var sprite := $Sprite
 
 	if dir == -1:
@@ -74,6 +65,18 @@ func _process(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, maxSpeed * dir * speedMultiplayer, step * delta)
 
 	velocity = move_and_slide(velocity)
+
+func _input(event):
+	if atackBlock or jumpBlock or landBlock:
+		pass
+	# atack
+	elif event.is_action_pressed("swordAtack"):
+		animation.play("swordAtack")
+		atackBlock = true
+	# jump
+	elif Input.is_action_pressed("jump") and grounded:
+		animation.play("jump")
+		jumpBlock = true
 
 func _animation_finished(name: String) -> void:
 	match name:
