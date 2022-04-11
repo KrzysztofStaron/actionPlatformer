@@ -66,7 +66,7 @@ func _process(delta: float) -> void:
 
 	velocity = move_and_slide(velocity)
 
-func _input(event):
+func _input(event) -> void:
 	if atackBlock or jumpBlock or landBlock:
 		pass
 	# atack
