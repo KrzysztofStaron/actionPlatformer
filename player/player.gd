@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 	if atackBlock or jumpBlock or landBlock:
 		pass
 	# falling
-	elif !grounded:
+	elif !grounded && velocity.y > 0:
 		animation.play("falling")
 	# land
 	elif animation.get_current_animation() == "falling" and grounded:
