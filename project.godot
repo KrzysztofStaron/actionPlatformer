@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="actionPlatformer"
-run/main_scene="res://main.tscn"
+run/main_scene="res://game.tscn"
 config/icon="res://assets/GameIcon.png"
 config/windows_native_icon="res://assets/GameIcon.ico"
 
