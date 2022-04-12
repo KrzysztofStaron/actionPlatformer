@@ -7,9 +7,6 @@
 [ext_resource path="res://player/textures/playerJump.png" type="Texture" id=5]
 [ext_resource path="res://player/dust/dust.tscn" type="PackedScene" id=6]
 
-[sub_resource type="RectangleShape2D" id=25]
-extents = Vector2( 4, 8.5 )
-
 [sub_resource type="CapsuleShape2D" id=24]
 radius = 6.0
 height = 10.0
@@ -17,10 +14,13 @@ height = 10.0
 [sub_resource type="CircleShape2D" id=12]
 radius = 3.0
 
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 4, 8.5 )
+
 [sub_resource type="Animation" id=26]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite/atackbox/box:shape")
+tracks/0/path = NodePath("atackbox/box:shape")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -587,14 +587,7 @@ texture = ExtResource( 1 )
 hframes = 2
 vframes = 2
 
-[node name="atackbox" type="Area2D" parent="Sprite"]
-
-[node name="box" type="CollisionShape2D" parent="Sprite/atackbox"]
-self_modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 11, 2 )
-shape = SubResource( 25 )
-
-[node name="hitbox" type="CollisionShape2D" parent="."]
+[node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 24 )
 
 [node name="groundSensor" type="Area2D" parent="."]
@@ -604,6 +597,13 @@ position = Vector2( 0, 11 )
 self_modulate = Color( 0.054902, 1, 0, 1 )
 position = Vector2( 0, -1 )
 shape = SubResource( 12 )
+
+[node name="atackbox" type="Area2D" parent="."]
+
+[node name="box" type="CollisionShape2D" parent="atackbox"]
+self_modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 11, 2 )
+shape = SubResource( 25 )
 
 [node name="playerAnimations" type="AnimationPlayer" parent="."]
 autoplay = "idle"

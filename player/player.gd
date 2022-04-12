@@ -59,9 +59,11 @@ func _process(delta: float) -> void:
 	var sprite := $Sprite
 
 	if dir == -1:
-		sprite.set_scale(Vector2(-1, 1))
+		sprite.flip_h = true
+		$atackbox.set_scale(Vector2(-1, 1))
 	elif dir == 1:
-		sprite.set_scale(Vector2(1, 1))
+		sprite.flip_h = false
+		$atackbox.set_scale(Vector2(1, 1))
 
 	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
 	velocity.x = move_toward(velocity.x, maxSpeed * dir * speedMultiplayer, step * delta)
@@ -91,7 +93,7 @@ func _animation_finished(name: String) -> void:
 			atackBlock = false
 
 func atack():
-	var objects = $Sprite/atackbox.get_overlapping_areas()
+	var objects = $atackbox.get_overlapping_areas()
 	for object in objects:
 		if object.get_node("..") is Enemy:
 			object.get_node("..").takeDamage(atackDamage)
