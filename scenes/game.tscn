@@ -13,8 +13,7 @@ extents = Vector2( 238.5, 10 )
 position = Vector2( 145, 165 )
 
 [node name="dummy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 96, 173 )
-maxHealth = 100
+position = Vector2( 87, 173 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=["ground"]]
 position = Vector2( -80, -65 )

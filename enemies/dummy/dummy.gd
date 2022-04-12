@@ -1,3 +1,5 @@
-extends Enemy
+extends Node
 
 
+func _ready() -> void:
+	pass
