@@ -74,7 +74,7 @@ func _input(event) -> void:
 		animation.play("swordAtack")
 		atackBlock = true
 	# jump
-	elif Input.is_action_pressed("jump") and grounded:
+	elif event.is_action_pressed("jump") and grounded:
 		animation.play("jump")
 		jumpBlock = true
 
