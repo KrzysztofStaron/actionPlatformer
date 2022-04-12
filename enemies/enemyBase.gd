@@ -9,7 +9,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if health <= 0:
-		queue_free()
+		$AnimationPlayer.play("death")
 
 func takeDamage(dmg: int):
+	$AnimationPlayer.play("hit")
+	print(name, "Dmg: ", dmg)
 	health -= dmg

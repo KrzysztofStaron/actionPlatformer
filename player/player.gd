@@ -14,6 +14,8 @@ export var jumpHeight := -90
 export var dust : PackedScene
 export var summonDust := false
 
+export var atackDamage : int
+
 onready var animation := $playerAnimations
 var grounded := true
 
@@ -57,9 +59,9 @@ func _process(delta: float) -> void:
 	var sprite := $Sprite
 
 	if dir == -1:
-		sprite.set_flip_h(true)
+		sprite.set_scale(Vector2(-1, 1))
 	elif dir == 1:
-		sprite.set_flip_h(false)
+		sprite.set_scale(Vector2(1, 1))
 
 	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
 	velocity.x = move_toward(velocity.x, maxSpeed * dir * speedMultiplayer, step * delta)
@@ -88,6 +90,11 @@ func _animation_finished(name: String) -> void:
 		"swordAtack":
 			atackBlock = false
 
+func atack():
+	var objects = $Sprite/atackbox.get_overlapping_areas()
+	for object in objects:
+		if object.get_node("..") is Enemy:
+			object.get_node("..").takeDamage(atackDamage)
 
 func update_gronded() -> void:
 	var bodies = $groundSensor.get_overlapping_bodies()

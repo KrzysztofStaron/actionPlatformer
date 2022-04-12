@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/dummy/dummy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 238.5, 10 )
 
 [node name="game" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource( 2 )]
+[node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 145, 165 )
+
+[node name="dummy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 96, 173 )
+maxHealth = 100
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=["ground"]]
 position = Vector2( -80, -65 )

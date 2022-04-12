@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sack.png-1128dd83454a4e3d7a4c4fc1da1a9e44.stex"
+path="res://.import/dummy.png-bc16d2849cd7c372d72d7470a79da7c6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/test/sack.png"
-dest_files=[ "res://.import/sack.png-1128dd83454a4e3d7a4c4fc1da1a9e44.stex" ]
+source_file="res://enemies/dummy/dummy.png"
+dest_files=[ "res://.import/dummy.png-bc16d2849cd7c372d72d7470a79da7c6.stex" ]
 
 [params]
 
