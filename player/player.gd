@@ -3,7 +3,6 @@ extends KinematicBody2D
 var velocity := Vector2.ZERO
 
 export var maxSpeed := 70.0
-
 export var step := 210
 export var speedMultiplayer := 0.5
 
