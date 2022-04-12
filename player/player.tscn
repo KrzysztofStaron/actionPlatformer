@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://player/playerIdle.png" type="Texture" id=1]
+[ext_resource path="res://player/textures/playerIdle.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
-[ext_resource path="res://player/playerRun.png" type="Texture" id=3]
-[ext_resource path="res://player/playerSwordAtack.png" type="Texture" id=4]
-[ext_resource path="res://player/playerJump.png" type="Texture" id=5]
+[ext_resource path="res://player/textures/playerRun.png" type="Texture" id=3]
+[ext_resource path="res://player/textures/playerSwordAtack.png" type="Texture" id=4]
+[ext_resource path="res://player/textures/playerJump.png" type="Texture" id=5]
 [ext_resource path="res://player/dust/dust.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleShape2D" id=24]
