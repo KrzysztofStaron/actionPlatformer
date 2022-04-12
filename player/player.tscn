@@ -495,18 +495,6 @@ tracks/6/keys = {
 "method": "atack"
 } ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath(".:atackDamage")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 25 ]
-}
 
 [sub_resource type="Animation" id=18]
 resource_name = "walk"

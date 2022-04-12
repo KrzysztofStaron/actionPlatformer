@@ -3,6 +3,7 @@ class_name Enemy
 
 var health : int
 export var maxHealth : int
+export var knockbackReductin : int
 
 func _ready() -> void:
 	health = maxHealth

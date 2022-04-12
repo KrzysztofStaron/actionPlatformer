@@ -14,7 +14,7 @@ export var jumpHeight := -90
 export var dust : PackedScene
 export var summonDust := false
 
-export var atackDamage : int
+export var atackDamage := 25
 
 onready var animation := $playerAnimations
 var grounded := true
