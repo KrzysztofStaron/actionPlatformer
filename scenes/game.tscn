@@ -10,7 +10,7 @@ extents = Vector2( 238.5, 10 )
 [node name="game" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 145, 165 )
+position = Vector2( 145, 176 )
 
 [node name="dummy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 87, 173 )

@@ -583,10 +583,9 @@ jumpHeight = -150
 dust = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
-hframes = 5
-vframes = 4
-frame = 13
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
 
 [node name="atackbox" type="Area2D" parent="Sprite"]
 
@@ -607,7 +606,8 @@ position = Vector2( 0, -1 )
 shape = SubResource( 12 )
 
 [node name="playerAnimations" type="AnimationPlayer" parent="."]
-playback_speed = 1.4
+autoplay = "idle"
+playback_speed = 0.7
 anims/RESET = SubResource( 26 )
 anims/falling = SubResource( 23 )
 anims/idle = SubResource( 14 )

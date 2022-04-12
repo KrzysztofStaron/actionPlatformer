@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://enemies/enemyBase.gd"
+"path": "res://enemies/base/enemyBase.gd"
 } ]
 _global_script_class_icons={
 "Enemy": ""
