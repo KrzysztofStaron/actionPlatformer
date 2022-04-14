@@ -18,6 +18,10 @@ position = Vector2( 145, 176 )
 position = Vector2( 0, -64 )
 current = true
 zoom = Vector2( 1, 1 )
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_bottom = 0.0
 
 [node name="shake" parent="player/camera" instance=ExtResource( 5 )]
 
