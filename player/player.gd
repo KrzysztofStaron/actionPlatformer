@@ -10,8 +10,8 @@ export var maxSpeed := 70.0
 export var step := 210
 export var speedMultiplayer := 0.5
 
-export var gravitation := 180
-export var maxGravitation := 270
+var gravitation : int
+var maxGravitation : int
 
 export var jumpHeight := -90
 export var dust : PackedScene
@@ -28,6 +28,13 @@ var grounded := true
 var jumpBlock := false
 var landBlock := false
 var atackBlock := false
+
+func _ready() -> void:
+	health = maxHealth
+	var settings = preload("res://settings.gd")
+
+	gravitation = settings.gravitation
+	maxGravitation = settings.maxGravitation
 
 func _process(delta: float) -> void:
 	# print(animation.playback_speed)

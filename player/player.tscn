@@ -586,8 +586,6 @@ tracks/5/keys = {
 script = ExtResource( 2 )
 step = 250
 speedMultiplayer = 0.231818
-gravitation = 200
-maxGravitation = 310
 jumpHeight = -150
 dust = ExtResource( 6 )
 
