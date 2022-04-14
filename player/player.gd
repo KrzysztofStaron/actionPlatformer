@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal atacked
+
 var velocity := Vector2.ZERO
 
 export var maxSpeed := 70.0
@@ -13,7 +15,7 @@ export var jumpHeight := -90
 export var dust : PackedScene
 export var summonDust := false
 
-export var atackDamage := 25
+export var atackDamage := 34
 
 onready var animation := $playerAnimations
 var grounded := true
@@ -92,6 +94,7 @@ func _animation_finished(name: String) -> void:
 			atackBlock = false
 
 func atack():
+	emit_signal("atacked")
 	var objects = $atackbox.get_overlapping_areas()
 	for object in objects:
 		if object.get_node("..") is Enemy:

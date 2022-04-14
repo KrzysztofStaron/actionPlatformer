@@ -13,6 +13,7 @@ func _process(_delta: float) -> void:
 		$AnimationPlayer.play("death")
 
 func takeDamage(dmg: int):
-	$AnimationPlayer.play("hit")
-	print(name, "Dmg: ", dmg)
-	health -= dmg
+	if $AnimationPlayer.get_current_animation() != "death":
+		$AnimationPlayer.play("hit")
+		print(name, "Dmg: ", dmg)
+		health -= dmg

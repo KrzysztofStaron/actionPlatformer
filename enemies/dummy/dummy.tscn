@@ -51,7 +51,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.0 ]
+"values": [ 1.2 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:texture")
@@ -112,6 +112,18 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("hitbox/hitbox:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -258,14 +270,15 @@ tracks/5/keys = {
 [node name="dummy" instance=ExtResource( 1 )]
 maxHealth = 100
 
-[node name="Sprite" parent="." index="0"]
+[node name="hitbox" parent="hitbox" index="0"]
+shape = SubResource( 4 )
+
+[node name="Sprite" parent="." index="4"]
+self_modulate = Color( 1, 1, 1, 0.983333 )
 texture = ExtResource( 3 )
 hframes = 3
 vframes = 3
 frame = 1
-
-[node name="hitbox" parent="hitbox" index="0"]
-shape = SubResource( 4 )
 
 [node name="AnimationPlayer" parent="." index="5"]
 autoplay = "idle"
