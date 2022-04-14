@@ -18,7 +18,7 @@ export var dust : PackedScene
 export var summonDust := false
 
 export var atackDamage := 34
-
+export var atackRandomines := 2
 export var maxHealth : int
 var health : int
 
@@ -109,7 +109,7 @@ func atack():
 	var objects = $atackbox.get_overlapping_areas()
 	for object in objects:
 		if object.get_node("..") is Enemy:
-			object.get_node("..").takeDamage(atackDamage)
+			object.get_node("..").takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines))
 
 func updateGronded() -> void:
 	var bodies = $groundSensor.get_overlapping_bodies()
