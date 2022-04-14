@@ -582,7 +582,7 @@ tracks/5/keys = {
 "values": [ 0.6 ]
 }
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 2 )
 step = 250
 speedMultiplayer = 0.231818

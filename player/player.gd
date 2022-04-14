@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 signal atacked
 
 var velocity := Vector2.ZERO
@@ -16,6 +18,9 @@ export var dust : PackedScene
 export var summonDust := false
 
 export var atackDamage := 34
+
+export var maxHealth : int
+var health : int
 
 onready var animation := $playerAnimations
 var grounded := true
@@ -35,7 +40,7 @@ func _process(delta: float) -> void:
 			get_node("..").add_child(newDust)
 			newDust.set_global_position(get_global_position() + Vector2(0, 9))
 
-	update_gronded()
+	updateGronded()
 
 	if atackBlock or jumpBlock or landBlock:
 		pass
@@ -45,7 +50,6 @@ func _process(delta: float) -> void:
 	# land
 	elif animation.get_current_animation() == "falling" and grounded:
 		landBlock = true
-		print("land")
 		animation.play("land")
 	# idle
 	elif dir == 0:
@@ -100,7 +104,7 @@ func atack():
 		if object.get_node("..") is Enemy:
 			object.get_node("..").takeDamage(atackDamage)
 
-func update_gronded() -> void:
+func updateGronded() -> void:
 	var bodies = $groundSensor.get_overlapping_bodies()
 	for body in bodies:
 		if body.is_in_group("ground"):
@@ -108,3 +112,7 @@ func update_gronded() -> void:
 			return
 
 	grounded = false
+
+func takeDamage(damage : int):
+	health -= damage
+	print(damage)
