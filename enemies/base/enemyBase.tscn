@@ -7,7 +7,7 @@
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/flashColor = Color( 1, 1, 1, 1 )
-shader_param/flash = 1.0
+shader_param/flash = 0.0
 
 [sub_resource type="Animation" id=2]
 length = 0.001
