@@ -130,9 +130,6 @@ func _on_ground_state_changed(_body:Node) -> void:
 
 		resetTimer()
 
-func _on_jumpTimer_timeout() -> void:
-	resetTimer()
-
 func resetTimer():
 	$jumpTimer.wait_time = 0.05
 	$jumpTimer.stop()

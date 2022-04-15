@@ -570,7 +570,6 @@ tracks/5/keys = {
 [node name="player" type="KinematicBody2D" groups=["player"]]
 collision_layer = 8
 script = ExtResource( 2 )
-speedMultiplayer = 0.2
 jumpHeight = -150
 dust = ExtResource( 6 )
 summonDust = true
@@ -617,4 +616,4 @@ wait_time = 0.05
 [connection signal="body_entered" from="groundSensor" to="." method="_on_ground_state_changed"]
 [connection signal="body_exited" from="groundSensor" to="." method="_on_ground_state_changed"]
 [connection signal="animation_finished" from="playerAnimations" to="." method="_animation_finished"]
-[connection signal="timeout" from="jumpTimer" to="." method="_on_jumpTimer_timeout"]
+[connection signal="timeout" from="jumpTimer" to="." method="resetTimer"]
