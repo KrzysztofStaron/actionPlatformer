@@ -572,7 +572,6 @@ collision_layer = 8
 script = ExtResource( 2 )
 jumpHeight = -150
 dust = ExtResource( 6 )
-summonDust = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 5 )
