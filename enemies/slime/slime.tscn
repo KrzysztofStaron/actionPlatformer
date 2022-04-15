@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://enemies/base/enemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enemies/slime/slime.gd" type="Script" id=2]
@@ -14,10 +14,61 @@ shader_param/flash = 0.0
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 6.0
-height = 0.0
+height = 4.0
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 0.01
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("collision:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("collision:shape:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("collision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 9 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("collision:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "atack"
@@ -198,7 +249,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "jump"
-step = 0.01
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -258,6 +309,54 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 1.1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("collision:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.35, 0.65 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 6.0, 2.0, 6.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("collision:shape:height")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.35, 0.65, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 6.0, 4.0, 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("collision:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.35, 0.4, 0.65, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 11 ), Vector2( 0, 13 ), Vector2( 0, 14 ), Vector2( 0, 15 ), Vector2( 0, 11 ), Vector2( 0, 9 ), Vector2( 0, 11 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("collision:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 90.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -322,13 +421,14 @@ atackDamage = 20
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 13 )
 position = Vector2( 0, 4 )
-texture = ExtResource( 6 )
+texture = ExtResource( 3 )
 hframes = 4
-vframes = 3
+vframes = 4
 region_rect = Rect2( 6.66583, 14.3943, 0.144131, 0.158957 )
 
 [node name="collision" parent="." index="1"]
-position = Vector2( 0, 11 )
+position = Vector2( 0, 9 )
+rotation = 1.5708
 shape = SubResource( 9 )
 
 [node name="atackbox" type="CollisionShape2D" parent="atackbox" index="0"]
@@ -336,6 +436,9 @@ shape = SubResource( 10 )
 disabled = true
 
 [node name="AnimationPlayer" parent="." index="4"]
+autoplay = "jump"
+playback_speed = 1.1
+anims/RESET = SubResource( 14 )
 anims/atack = SubResource( 2 )
 anims/death = SubResource( 3 )
 anims/jump = SubResource( 4 )

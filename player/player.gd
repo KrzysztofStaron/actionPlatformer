@@ -105,7 +105,6 @@ func _animation_finished(name: String) -> void:
 func atack():
 	emit_signal("atacked")
 	var objects = $atackbox.get_overlapping_bodies()
-	print(objects.size())
 	for object in objects:
 		if object is Enemy:
 			object.takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines))
