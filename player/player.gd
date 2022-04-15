@@ -40,16 +40,32 @@ func _ready() -> void:
 	gravitation = settings.gravitation
 	maxGravitation = settings.maxGravitation
 
-func _process(delta: float) -> void:
-	# print(animation.playback_speed)
+func _physics_process(delta: float) -> void:
 	var dir := MoveInput.axis("move_left", "move_right")
+
+	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
+	velocity.x = move_toward(velocity.x, maxSpeed * dir * speedMultiplayer, step * delta)
+
+	velocity = move_and_slide(velocity)
+
+func _process(_delta: float) -> void:
+	var dir := MoveInput.axis("move_left", "move_right")
+
+	match dir:
+		-1:
+			$Sprite.flip_h = true
+			$atackbox.set_scale(Vector2(-1, 1))
+		1:
+			$Sprite.flip_h = false
+			$atackbox.set_scale(Vector2(1, 1))
 
 	if summonDust:
 		summonDust = false
-		if grounded:
-			var newDust := dust.instance()
-			get_node("..").add_child(newDust)
-			newDust.set_global_position(get_global_position() + Vector2(0, 9))
+		var newDust := dust.instance()
+		get_node("..").add_child(newDust)
+		newDust.set_global_position(get_global_position() + Vector2(0, 9))
+
+	# Animations
 
 	if atackBlock or jumpBlock or landBlock:
 		pass
@@ -66,23 +82,9 @@ func _process(delta: float) -> void:
 	# walking
 	elif Input.is_action_pressed("walk"):
 		animation.play("walk")
-	# runing
+	# running
 	else:
 		animation.play("run")
-
-	var sprite := $Sprite
-
-	if dir == -1:
-		sprite.flip_h = true
-		$atackbox.set_scale(Vector2(-1, 1))
-	elif dir == 1:
-		sprite.flip_h = false
-		$atackbox.set_scale(Vector2(1, 1))
-
-	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
-	velocity.x = move_toward(velocity.x, maxSpeed * dir * speedMultiplayer, step * delta)
-
-	velocity = move_and_slide(velocity)
 
 func _input(event) -> void:
 	if atackBlock or jumpBlock or landBlock:
@@ -95,6 +97,7 @@ func _input(event) -> void:
 	elif event.is_action_pressed("jump") and grounded:
 		animation.play("jump")
 		jumpBlock = true
+	# autoJump
 	elif event.is_action_pressed("jump"):
 		$jumpTimer.wait_time = autoJump
 		$jumpTimer.start()
