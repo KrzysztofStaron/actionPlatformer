@@ -14,7 +14,7 @@ var gravitation : int
 var maxGravitation : int
 
 export var jumpHeight := -90
-export var autoJump := 0.1
+export var autoJump := 0.15
 
 export var dust : PackedScene
 export var summonDust := false
