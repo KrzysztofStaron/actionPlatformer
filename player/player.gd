@@ -113,8 +113,8 @@ func atack():
 	emit_signal("atacked")
 	var objects = $atackbox.get_overlapping_bodies()
 	for object in objects:
-		if object is Enemy:
-			object.takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines))
+		# if object is Enemy:
+		object.takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines))
 
 func takeDamage(damage : int):
 	health -= damage
@@ -128,9 +128,11 @@ func _on_ground_state_changed(_body:Node) -> void:
 		animation.play("jump")
 		jumpBlock = true
 
-		$jumpTimer.wait_time = 0.05
-		$jumpTimer.stop()
+		resetTimer()
 
 func _on_jumpTimer_timeout() -> void:
+	resetTimer()
+
+func resetTimer():
 	$jumpTimer.wait_time = 0.05
 	$jumpTimer.stop()
