@@ -124,7 +124,7 @@ func _on_ground_state_changed(_body:Node) -> void:
 	var bodies = $groundSensor.get_overlapping_bodies()
 	grounded = bodies.size() > 0
 
-	if $jumpTimer.wait_time > 0.06:
+	if $jumpTimer.wait_time >= 0.06:
 		animation.play("jump")
 		jumpBlock = true
 
