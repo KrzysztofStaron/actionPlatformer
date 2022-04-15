@@ -106,19 +106,15 @@ func _animation_finished(name: String) -> void:
 
 func atack():
 	emit_signal("atacked")
-	var objects = $atackbox.get_overlapping_areas()
+	var objects = $atackbox.get_overlapping_bodies()
+	print(objects.size())
 	for object in objects:
-		if object.get_node("..") is Enemy:
-			object.get_node("..").takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines))
+		if object is Enemy:
+			object.takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines))
 
 func updateGronded() -> void:
 	var bodies = $groundSensor.get_overlapping_bodies()
-	for body in bodies:
-		if body.is_in_group("ground"):
-			grounded = true
-			return
-
-	grounded = false
+	grounded = bodies.size() > 0
 
 func takeDamage(damage : int):
 	health -= damage

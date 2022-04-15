@@ -583,6 +583,8 @@ tracks/5/keys = {
 }
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource( 2 )
 step = 250
 speedMultiplayer = 0.231818
@@ -602,6 +604,7 @@ shape = SubResource( 24 )
 
 [node name="groundSensor" type="Area2D" parent="."]
 position = Vector2( 0, 11 )
+collision_layer = 0
 
 [node name="groundSensor" type="CollisionShape2D" parent="groundSensor"]
 self_modulate = Color( 0.054902, 1, 0, 1 )
@@ -609,6 +612,8 @@ position = Vector2( 0, -1 )
 shape = SubResource( 12 )
 
 [node name="atackbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="atackbox"]
 position = Vector2( 7, 4 )
