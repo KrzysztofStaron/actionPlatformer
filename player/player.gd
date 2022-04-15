@@ -8,21 +8,25 @@ var velocity := Vector2.ZERO
 
 export var maxSpeed := 70.0
 export var step := 210
-export var speedMultiplayer := 0.5
+export var speedMultiplayer := 1.0
 
 var gravitation : int
 var maxGravitation : int
 
 export var jumpHeight := -90
+export var autoJump := 0.1
+
 export var dust : PackedScene
 export var summonDust := false
 
 export var atackDamage := 34
-export var atackRandomines := 2
-export var maxHealth : int
+export var atackRandomines := 4
+
+export var maxHealth := 100
 var health : int
 
 onready var animation := $playerAnimations
+
 var grounded := true
 
 var jumpBlock := false
@@ -91,6 +95,9 @@ func _input(event) -> void:
 	elif event.is_action_pressed("jump") and grounded:
 		animation.play("jump")
 		jumpBlock = true
+	elif event.is_action_pressed("jump"):
+		$jumpTimer.wait_time = autoJump
+		$jumpTimer.start()
 
 func _animation_finished(name: String) -> void:
 	match name:
@@ -116,3 +123,14 @@ func takeDamage(damage : int):
 func _on_ground_state_changed(_body:Node) -> void:
 	var bodies = $groundSensor.get_overlapping_bodies()
 	grounded = bodies.size() > 0
+
+	if $jumpTimer.wait_time > 0.06:
+		animation.play("jump")
+		jumpBlock = true
+
+		$jumpTimer.wait_time = 0.05
+		$jumpTimer.stop()
+
+func _on_jumpTimer_timeout() -> void:
+	$jumpTimer.wait_time = 0.05
+	$jumpTimer.stop()
