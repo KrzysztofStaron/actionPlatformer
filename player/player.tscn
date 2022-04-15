@@ -14,7 +14,7 @@ height = 10.0
 [sub_resource type="CircleShape2D" id=12]
 radius = 3.0
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=25]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("atackbox/CollisionPolygon2D:polygon")
@@ -26,7 +26,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ PoolVector2Array( -6.96774, 3.91111, 0.774194, 0.711111, 0, -1.77778, -5.41935, -2.13333, -8.12903, -5.33333, -0.387097, -4.97778, 3.09677, -3.2, 3.61935, 0.233333, 2.70968, 2.84444, -1.16129, 3.91111 ) ]
+"values": [ PoolVector2Array( 3.48388, 2.14577e-06, 3.48388, 5.68889, 1.93549, 8.53334, -1.16129, 6.4, 0, 2.14577e-06 ) ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -502,7 +502,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0, 0.5, 0.7, 1.1, 1.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ PoolVector2Array(  ), PoolVector2Array( -6.96774, 3.91111, 0.774194, 0.711111, 0, -1.77778, -5.41935, -2.13333, -8.12903, -5.33333, -0.387097, -4.97778, 3.09677, -3.2, 3.61935, 0.233333, 2.70968, 2.84444, -1.16129, 3.91111 ), PoolVector2Array(  ), PoolVector2Array( 1.54839, -5.33333, 3.87097, -0.355556, 1.93548, 3.55556, 1.16129, 3.55556, -1.16129, 1.42222, 0, -4.97778 ), PoolVector2Array(  ) ]
+"values": [ PoolVector2Array(  ), PoolVector2Array( -6.96774, 3.91111, 0.774194, 0.711111, 0, -1.77778, -5.41935, -2.13333, -8.12903, -5.33333, -0.387097, -4.97778, 3.09677, -3.2, 3.61935, 0.233333, 2.70968, 2.84444, -1.16129, 3.91111 ), PoolVector2Array(  ), PoolVector2Array( 3.48388, -0.355556, 3.09678, 1.77778, 2.32258, 3.55556, 0, 3.2, 0, -5.33333, 1.54839, -5.68889, 3.09678, -2.48889 ), PoolVector2Array(  ) ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -583,21 +583,20 @@ tracks/5/keys = {
 }
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
-collision_layer = 4
-collision_mask = 3
+collision_layer = 8
 script = ExtResource( 2 )
 step = 250
-speedMultiplayer = 0.231818
+speedMultiplayer = 0.8
 jumpHeight = -150
 dust = ExtResource( 6 )
 atackRandomines = 4
 maxHealth = 100
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 4 )
-hframes = 5
+texture = ExtResource( 5 )
+hframes = 4
 vframes = 4
-frame = 12
+frame = 9
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 24 )
@@ -618,12 +617,12 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="atackbox"]
 position = Vector2( 7, 4 )
 scale = Vector2( 2.58333, 2.8125 )
-polygon = PoolVector2Array( -6.96774, 3.91111, 0.774194, 0.711111, 0, -1.77778, -5.41935, -2.13333, -8.12903, -5.33333, -0.387097, -4.97778, 3.09677, -3.2, 3.61935, 0.233333, 2.70968, 2.84444, -1.16129, 3.91111 )
+polygon = PoolVector2Array( 3.48388, 2.14577e-06, 3.48388, 5.68889, 1.93549, 8.53334, -1.16129, 6.4, 0, 2.14577e-06 )
 
 [node name="playerAnimations" type="AnimationPlayer" parent="."]
 autoplay = "idle"
 playback_speed = 1.4
-anims/RESET = SubResource( 26 )
+anims/RESET = SubResource( 25 )
 anims/falling = SubResource( 23 )
 anims/idle = SubResource( 14 )
 anims/jump = SubResource( 21 )
@@ -632,4 +631,6 @@ anims/run = SubResource( 20 )
 anims/swordAtack = SubResource( 19 )
 anims/walk = SubResource( 18 )
 
+[connection signal="body_entered" from="groundSensor" to="." method="_on_ground_state_changed"]
+[connection signal="body_exited" from="groundSensor" to="." method="_on_ground_state_changed"]
 [connection signal="animation_finished" from="playerAnimations" to="." method="_animation_finished"]

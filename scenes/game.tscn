@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://default_env.tres" type="Environment" id=1]
 [ext_resource path="res://enemies/dummy/dummy.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://player/camera/camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player/camera/shake/shake.tscn" type="PackedScene" id=5]
 [ext_resource path="res://enemies/slime/slime.tscn" type="PackedScene" id=6]
-[ext_resource path="res://enemies/base/enemyBase.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 238.5, 10 )
@@ -52,29 +51,30 @@ position = Vector2( 383, 97 )
 shape = SubResource( 3 )
 
 [node name="slime" parent="." instance=ExtResource( 6 )]
-position = Vector2( -9, 167 )
+position = Vector2( 203, 139 )
+collision_mask = 5
 
 [node name="dummies" type="Node2D" parent="."]
 
 [node name="dummy" parent="dummies" instance=ExtResource( 2 )]
 position = Vector2( 259, 173 )
-script = ExtResource( 7 )
+collision_mask = 5
 
 [node name="dummy2" parent="dummies" instance=ExtResource( 2 )]
 position = Vector2( 224, 173 )
-script = ExtResource( 7 )
+collision_mask = 5
 
 [node name="dummy3" parent="dummies" instance=ExtResource( 2 )]
 position = Vector2( 208, 173 )
-script = ExtResource( 7 )
+collision_mask = 5
 
 [node name="dummy4" parent="dummies" instance=ExtResource( 2 )]
 position = Vector2( 88, 173 )
-script = ExtResource( 7 )
+collision_mask = 5
 
 [node name="dummy5" parent="dummies" instance=ExtResource( 2 )]
 position = Vector2( 32, 173 )
-script = ExtResource( 7 )
+collision_mask = 5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )

@@ -47,8 +47,6 @@ func _process(delta: float) -> void:
 			get_node("..").add_child(newDust)
 			newDust.set_global_position(get_global_position() + Vector2(0, 9))
 
-	updateGronded()
-
 	if atackBlock or jumpBlock or landBlock:
 		pass
 	# falling
@@ -112,10 +110,10 @@ func atack():
 		if object is Enemy:
 			object.takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines))
 
-func updateGronded() -> void:
-	var bodies = $groundSensor.get_overlapping_bodies()
-	grounded = bodies.size() > 0
-
 func takeDamage(damage : int):
 	health -= damage
 	print(damage)
+
+func _on_ground_state_changed(_body:Node) -> void:
+	var bodies = $groundSensor.get_overlapping_bodies()
+	grounded = bodies.size() > 0

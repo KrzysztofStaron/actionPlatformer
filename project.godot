@@ -110,7 +110,7 @@ swordAtack={
 
 2d_physics/layer_1="ground"
 2d_physics/layer_2="enemy"
-2d_physics/layer_3="player"
+2d_physics/layer_4="player"
 
 [physics]
 
