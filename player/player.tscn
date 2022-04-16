@@ -219,17 +219,19 @@ tracks/5/keys = {
 "update": 1,
 "values": [ 0.2, 0.8 ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath(".:summonDust")
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.275 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"values": [ {
+"args": [  ],
+"method": "summon_dust"
+} ]
 }
 
 [sub_resource type="Animation" id=22]
@@ -570,6 +572,7 @@ tracks/5/keys = {
 [node name="player" type="KinematicBody2D" groups=["player"]]
 collision_layer = 8
 script = ExtResource( 2 )
+speedMultiplayer = 0.8
 jumpHeight = -150
 dust = ExtResource( 6 )
 
@@ -577,6 +580,7 @@ dust = ExtResource( 6 )
 texture = ExtResource( 5 )
 hframes = 4
 vframes = 4
+frame = 3
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 24 )
@@ -601,7 +605,7 @@ polygon = PoolVector2Array( 0, 0, 0, 0, 0, 0 )
 
 [node name="playerAnimations" type="AnimationPlayer" parent="."]
 autoplay = "idle"
-playback_speed = 3.0
+playback_speed = 2.4
 anims/falling = SubResource( 23 )
 anims/idle = SubResource( 14 )
 anims/jump = SubResource( 21 )

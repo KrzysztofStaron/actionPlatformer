@@ -17,7 +17,6 @@ export var jumpHeight := -90
 export var autoJump := 0.15
 
 export var dust : PackedScene
-export var summonDust := false
 
 export var atackDamage := 34
 export var atackRandomines := 4
@@ -58,12 +57,6 @@ func _process(_delta: float) -> void:
 		1:
 			$Sprite.flip_h = false
 			$atackbox.set_scale(Vector2(1, 1))
-
-	if summonDust:
-		summonDust = false
-		var newDust := dust.instance()
-		get_node("..").add_child(newDust)
-		newDust.set_global_position(get_global_position() + Vector2(0, 9))
 
 	# Animations
 
@@ -118,6 +111,11 @@ func atack():
 	for object in objects:
 		# if object is Enemy:
 		object.takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines))
+
+func summon_dust():
+	var newDust := dust.instance()
+	get_parent().add_child(newDust)
+	newDust.set_global_position(get_global_position() + Vector2(0, 9))
 
 func takeDamage(damage : int):
 	health -= damage

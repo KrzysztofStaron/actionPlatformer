@@ -20,14 +20,6 @@ extents = Vector2( 5, 107 )
 
 [node name="player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 145, 176 )
-maxSpeed = null
-step = null
-speedMultiplayer = null
-autoJump = null
-summonDust = null
-atackDamage = null
-atackRandomines = null
-maxHealth = null
 
 [node name="camera" parent="player" instance=ExtResource( 4 )]
 position = Vector2( 0, -64 )
