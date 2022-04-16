@@ -9,7 +9,7 @@
 resource_local_to_scene = true
 shader = ExtResource( 4 )
 shader_param/flashColor = Color( 1, 1, 1, 1 )
-shader_param/flash = 0.0
+shader_param/flash = 1.0
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 5.0
@@ -296,5 +296,3 @@ anims/idle = SubResource( 3 )
 
 [node name="hitAim" parent="." index="5"]
 autoplay = "idle"
-
-[connection signal="animation_finished" from="hitAim" to="." method="_on_hitAim_animation_finished"]

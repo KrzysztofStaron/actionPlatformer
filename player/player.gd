@@ -6,6 +6,8 @@ signal atacked
 
 var velocity := Vector2.ZERO
 
+export var knockback := 10.0
+
 export var maxSpeed := 70.0
 export var step := 210
 export var speedMultiplayer := 1.0
@@ -28,7 +30,7 @@ onready var animation := $playerAnimations
 
 var grounded := true
 
-var jumpBlock := false
+export var jumpBlock := false
 var landBlock := false
 var atackBlock := false
 
@@ -80,20 +82,23 @@ func _process(_delta: float) -> void:
 		animation.play("run")
 
 func _input(event) -> void:
-	if atackBlock or jumpBlock or landBlock:
+	if jumpBlock or landBlock:
 		pass
 	# atack
-	elif event.is_action_pressed("swordAtack"):
-		animation.play("swordAtack")
-		atackBlock = true
-	# jump
 	elif event.is_action_pressed("jump") and grounded:
 		animation.play("jump")
 		jumpBlock = true
-	# autoJump
+		atackBlock = false
+	# jump
 	elif event.is_action_pressed("jump"):
 		$jumpTimer.wait_time = autoJump
 		$jumpTimer.start()
+		atackBlock = false
+	# autoJump
+	elif event.is_action_pressed("swordAtack") and !atackBlock:
+		animation.play("swordAtack")
+		atackBlock = true
+
 
 func _animation_finished(name: String) -> void:
 	match name:
@@ -110,7 +115,7 @@ func atack():
 	var objects = $atackbox.get_overlapping_bodies()
 	for object in objects:
 		# if object is Enemy:
-		object.takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines))
+		object.takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines), knockback * $atackbox.scale.x)
 
 func summon_dust():
 	var newDust := dust.instance()
@@ -118,6 +123,7 @@ func summon_dust():
 	newDust.set_global_position(get_global_position() + Vector2(0, 9))
 
 func takeDamage(damage : int):
+	$hitAim.play("hit")
 	health -= damage
 	print(damage)
 

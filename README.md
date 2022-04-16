@@ -4,8 +4,8 @@ platformer
 fight
 ```
 GREEN: sensor SelfModulate: #0eff00
-BLUE: hitBox SelfModulate: #05f3ff
-RED: hurtbox SelfModulate: #ff0000
+BLUE: hitbox SelfModulate: #ffffff
+RED: atackbox SelfModulate: #ff0000
 ```
 
 # controls

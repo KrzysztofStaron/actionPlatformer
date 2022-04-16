@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://enemies/base/enemyBase.gd" type="Script" id=1]
 [ext_resource path="res://enemies/base/flash.tres" type="Shader" id=2]
+[ext_resource path="res://enemies/base/hitAim.tscn" type="PackedScene" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -9,52 +10,8 @@ shader = ExtResource( 2 )
 shader_param/flashColor = Color( 1, 1, 1, 1 )
 shader_param/flash = 0.0
 
-[sub_resource type="Animation" id=2]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:material:shader_param/flash")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:material:shader_param/flash")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0, 0.0 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "idle"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:material:shader_param/flash")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
+[sub_resource type="CircleShape2D" id=5]
+radius = 3.0
 
 [node name="enemyBase" type="KinematicBody2D"]
 collision_layer = 2
@@ -64,9 +21,10 @@ script = ExtResource( 1 )
 material = SubResource( 1 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
+modulate = Color( 1, 1, 1, 0.784314 )
 
 [node name="atackbox" type="Area2D" parent="."]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 1, 0, 0, 0.784314 )
 collision_layer = 0
 collision_mask = 8
 
@@ -74,7 +32,15 @@ collision_mask = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="hitAim" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 2 )
-anims/hit = SubResource( 4 )
-anims/idle = SubResource( 3 )
+[node name="hitAim" parent="." instance=ExtResource( 3 )]
+
+[node name="groundSensor" type="Area2D" parent="."]
+modulate = Color( 0.054902, 1, 0, 0.784314 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="groundSensor"]
+position = Vector2( 0, -1 )
+shape = SubResource( 5 )
+
+[connection signal="body_entered" from="groundSensor" to="." method="_on_ground_state_changed"]
+[connection signal="body_exited" from="groundSensor" to="." method="_on_ground_state_changed"]
