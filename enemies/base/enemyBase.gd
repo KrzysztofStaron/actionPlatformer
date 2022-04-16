@@ -42,7 +42,6 @@ func _process(_delta: float) -> void:
 
 func takeDamage(dmg: int, knockback: float) -> void:
 	applyedKnockback = knockback
-	print(applyedKnockback)
 	if anim.get_current_animation() != "death":
 		if anim.has_animation("hit"):
 			anim.play("hit")
