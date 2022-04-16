@@ -688,6 +688,7 @@ tracks/6/keys = {
 }
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
+z_index = 2
 collision_layer = 8
 script = ExtResource( 2 )
 knockback = 50.0

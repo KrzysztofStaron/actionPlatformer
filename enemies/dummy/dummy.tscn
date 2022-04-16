@@ -9,7 +9,7 @@
 resource_local_to_scene = true
 shader = ExtResource( 4 )
 shader_param/flashColor = Color( 1, 1, 1, 1 )
-shader_param/flash = 1.0
+shader_param/flash = 0.0
 
 [sub_resource type="CapsuleShape2D" id=8]
 radius = 5.0
@@ -274,7 +274,7 @@ tracks/5/keys = {
 }
 
 [node name="dummy" instance=ExtResource( 1 )]
-maxHealth = 100
+maxHealth = 120
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 7 )
