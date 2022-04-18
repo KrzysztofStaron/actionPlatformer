@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://environment.tres" type="Environment" id=1]
 [ext_resource path="res://enemies/dummy/dummy.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://player/camera/shake/shake.tscn" type="PackedScene" id=5]
 [ext_resource path="res://enemies/slime/slime.tscn" type="PackedScene" id=6]
 [ext_resource path="res://tilesets/map/map.tres" type="TileSet" id=7]
-[ext_resource path="res://enemies/base/enemyBase.gd" type="Script" id=8]
 
 [node name="game" type="Node2D"]
 
@@ -39,27 +38,22 @@ position = Vector2( 0, 5 )
 [node name="dummy" parent="dummies" instance=ExtResource( 2 )]
 position = Vector2( 259, 173 )
 collision_mask = 5
-script = ExtResource( 8 )
 
 [node name="dummy2" parent="dummies" instance=ExtResource( 2 )]
 position = Vector2( 224, 173 )
 collision_mask = 5
-script = ExtResource( 8 )
 
 [node name="dummy3" parent="dummies" instance=ExtResource( 2 )]
 position = Vector2( 208, 173 )
 collision_mask = 5
-script = ExtResource( 8 )
 
 [node name="dummy4" parent="dummies" instance=ExtResource( 2 )]
 position = Vector2( 88, 173 )
 collision_mask = 5
-script = ExtResource( 8 )
 
 [node name="dummy5" parent="dummies" instance=ExtResource( 2 )]
 position = Vector2( 32, 173 )
 collision_mask = 5
-script = ExtResource( 8 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 7 )
