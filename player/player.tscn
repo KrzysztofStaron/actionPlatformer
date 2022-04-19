@@ -1,10 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=33 format=2]
 
-[ext_resource path="res://player/textures/playerIdle.png" type="Texture" id=1]
+[ext_resource path="res://player/textures/idle.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
-[ext_resource path="res://player/textures/playerRun.png" type="Texture" id=3]
-[ext_resource path="res://player/textures/playerSwordAtack.png" type="Texture" id=4]
-[ext_resource path="res://player/textures/playerJump.png" type="Texture" id=5]
+[ext_resource path="res://player/textures/run.png" type="Texture" id=3]
+[ext_resource path="res://player/textures/atack.png" type="Texture" id=4]
+[ext_resource path="res://player/textures/walk.png" type="Texture" id=5]
 [ext_resource path="res://player/dust/dust.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enemies/base/flash.tres" type="Shader" id=7]
 [ext_resource path="res://enemies/base/hitAim.tscn" type="PackedScene" id=8]
@@ -16,12 +16,12 @@ shader_param/flash = 0.0
 
 [sub_resource type="CapsuleShape2D" id=24]
 radius = 6.0
-height = 10.0
+height = 12.0
 
 [sub_resource type="CircleShape2D" id=12]
 radius = 3.0
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=51]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("atackbox/CollisionPolygon2D:polygon")
@@ -33,101 +33,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ PoolVector2Array( -6.96774, 3.91111, 0.774194, 0.711111, 0, -1.77778, -5.41935, -2.13333, -8.12903, -5.33333, -0.387097, -4.97778, 3.48388, -3.2, 3.87097, 0.355556, 3.09678, 2.84444, -1.16129, 3.91111 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 1 ) ]
+"values": [ PoolVector2Array( 3.87097, -4.97778, 3.87097, 3.91111, -0.387097, 3.91111, -0.387097, -4.97778 ) ]
 }
 
-[sub_resource type="Animation" id=23]
-resource_name = "falling"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 9 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:speedMultiplayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0.5 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=27]
 resource_name = "idle"
-length = 0.4
+length = 0.6
 loop = true
+step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -171,231 +84,17 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("playerAnimations:playback_speed")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0.7 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
 
-[sub_resource type="Animation" id=21]
-resource_name = "jump"
-length = 0.7
-step = 0.025
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("playerAnimations:playback_speed")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2.6 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:speedMultiplayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0.2, 1.1 ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "summon_dust"
-} ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Sprite:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=22]
-resource_name = "land"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 10, 11, 12 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("playerAnimations:playback_speed")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1.8 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:speedMultiplayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.4 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=30]
 resource_name = "run"
-length = 1.8
+length = 0.95
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -439,13 +138,13 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("playerAnimations:playback_speed")
+tracks/4/path = NodePath(".:speedMultiplayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -453,37 +152,14 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2.4 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:speedMultiplayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 1.0 ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 1 ) ]
-}
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=32]
 resource_name = "swordAtack"
-length = 1.8
+length = 1.71
+step = 0.09
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -527,81 +203,29 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.09, 0.18, 0.27, 0.36, 0.45, 0.54, 0.63, 0.72, 0.81, 0.9, 0.99, 1.08, 1.17, 1.26, 1.35, 1.44, 1.53, 1.62 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("playerAnimations:playback_speed")
+tracks/4/path = NodePath("atackbox/CollisionPolygon2D:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.54, 0.63, 1.1205, 1.17 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1.4 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:speedMultiplayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.4, 0.6, 1.05, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0.05, 0.25, 0.05, 0.3, 0.05 ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.6, 1.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "atack"
-}, {
-"args": [  ],
-"method": "atack"
-} ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("atackbox/CollisionPolygon2D:polygon")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5, 0.7, 1.1, 1.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ PoolVector2Array(  ), PoolVector2Array( -6.96774, 3.91111, 0.774194, 0.711111, 0, -1.77778, -5.41935, -2.13333, -8.12903, -5.33333, -0.387097, -4.97778, 3.48388, -3.2, 3.87097, 0.355556, 3.09678, 2.84444, -1.16129, 3.91111 ), PoolVector2Array(  ), PoolVector2Array( 4.25807, -0.355556, 3.48388, 1.77778, 2.70968, 3.55556, 0, 3.55556, 0, -5.68889, 1.93549, -5.68889, 3.48388, -2.48889 ), PoolVector2Array(  ) ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Sprite:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ PoolVector2Array( -0.774194, -4.97778, 3.09678, -3.55556, 4.25807, -1.77778, 4.25807, 1.42222, 3.09678, 2.84444, -0.774194, 4.26667, -1.93549, 4.26667, -2.32258, -4.97778 ), PoolVector2Array( 0, 0, 0, 0, 0, 0 ), PoolVector2Array( 3.87097, -4.97778, 3.87097, 3.91111, -0.387097, 3.91111, -0.387097, -4.97778 ), PoolVector2Array( 0, 0, 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=33]
 resource_name = "walk"
-length = 1.8
+length = 1.44
 loop = true
+step = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -612,7 +236,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ) ]
+"values": [ ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:hframes")
@@ -645,13 +269,13 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96, 1.04, 1.12, 1.2, 1.28, 1.36 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("playerAnimations:playback_speed")
+tracks/4/path = NodePath(".:speedMultiplayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -659,40 +283,65 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1.2 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:speedMultiplayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.6 ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 1 ) ]
-}
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "run"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "swordAtack"
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=28]
+states/idle/node = SubResource( 34 )
+states/idle/position = Vector2( 391, 127 )
+states/run/node = SubResource( 39 )
+states/run/position = Vector2( 299, 342 )
+states/swordAtack/node = SubResource( 38 )
+states/swordAtack/position = Vector2( 679, 127 )
+states/walk/node = SubResource( 40 )
+states/walk/position = Vector2( 492, 342 )
+transitions = [ "idle", "run", SubResource( 41 ), "run", "idle", SubResource( 42 ), "idle", "walk", SubResource( 43 ), "walk", "idle", SubResource( 44 ), "run", "walk", SubResource( 45 ), "walk", "run", SubResource( 46 ), "idle", "swordAtack", SubResource( 47 ), "run", "swordAtack", SubResource( 48 ), "walk", "swordAtack", SubResource( 49 ), "swordAtack", "idle", SubResource( 50 ) ]
+start_node = "idle"
+graph_offset = Vector2( 0, 67.254 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
 z_index = 2
 collision_layer = 8
 script = ExtResource( 2 )
 knockback = 50.0
-speedMultiplayer = 0.05
+speedMultiplayer = 0.6
 jumpHeight = -150
 dust = ExtResource( 6 )
 
@@ -702,8 +351,10 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 4 )
 hframes = 5
 vframes = 4
+frame = 18
 
 [node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.5 )
 shape = SubResource( 24 )
 
 [node name="groundSensor" type="Area2D" parent="."]
@@ -722,22 +373,21 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="atackbox"]
 position = Vector2( 7, 4 )
 scale = Vector2( 2.58333, 2.8125 )
-polygon = PoolVector2Array( -6.96774, 3.91111, 0.774194, 0.711111, 0, -1.77778, -5.41935, -2.13333, -8.12903, -5.33333, -0.387097, -4.97778, 3.48388, -3.2, 3.87097, 0.355556, 3.09678, 2.84444, -1.16129, 3.91111 )
-
-[node name="playerAnimations" type="AnimationPlayer" parent="."]
-autoplay = "idle"
-playback_speed = 1.4
-anims/RESET = SubResource( 26 )
-anims/falling = SubResource( 23 )
-anims/idle = SubResource( 14 )
-anims/jump = SubResource( 21 )
-anims/land = SubResource( 22 )
-anims/run = SubResource( 20 )
-anims/swordAtack = SubResource( 19 )
-anims/walk = SubResource( 18 )
+polygon = PoolVector2Array( 3.87097, -4.97778, 3.87097, 3.91111, -0.387097, 3.91111, -0.387097, -4.97778 )
 
 [node name="hitAim" parent="." instance=ExtResource( 8 )]
 
+[node name="playerAnimations" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 51 )
+anims/idle = SubResource( 27 )
+anims/run = SubResource( 30 )
+anims/swordAtack = SubResource( 32 )
+anims/walk = SubResource( 33 )
+
+[node name="animation" type="AnimationTree" parent="."]
+tree_root = SubResource( 28 )
+anim_player = NodePath("../playerAnimations")
+parameters/playback = SubResource( 29 )
+
 [connection signal="body_entered" from="groundSensor" to="." method="_on_ground_state_changed"]
 [connection signal="body_exited" from="groundSensor" to="." method="_on_ground_state_changed"]
-[connection signal="animation_finished" from="playerAnimations" to="." method="_animation_finished"]

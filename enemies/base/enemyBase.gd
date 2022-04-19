@@ -36,7 +36,7 @@ func _ready() -> void:
 
 	health = maxHealth
 
-func _gjprocess(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	if health <= 0:
 		anim.play("death")
 

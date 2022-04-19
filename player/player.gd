@@ -26,15 +26,12 @@ export var atackRandomines := 4
 export var maxHealth := 100
 var health : int
 
-onready var animation := $playerAnimations
+onready var animation = $animation.get("parameters/playback")
 
 var grounded := true
 
-export var jumpBlock := false
-var landBlock := false
-var atackBlock := false
-
 func _ready() -> void:
+	$animation.active = true
 	health = maxHealth
 	var settings = preload("res://settings.gd")
 
@@ -60,50 +57,15 @@ func _process(_delta: float) -> void:
 			$Sprite.flip_h = false
 			$atackbox.set_scale(Vector2(1, 1))
 
-	# Animations
-
-	if atackBlock or jumpBlock or landBlock:
-		pass
-	# falling
-	elif !grounded:
-		animation.play("falling")
-	# land
-	elif animation.get_current_animation() == "falling" and grounded:
-		landBlock = true
-		animation.play("land")
-	# idle
-	elif dir == 0:
-		animation.play("idle")
-	# walking
-	elif Input.is_action_pressed("walk"):
-		animation.play("walk")
-	# running
+	if dir != 0 and Input.is_action_pressed("walk"):
+		animation.travel("walk")
+	elif dir != 0:
+		animation.travel("run")
 	else:
-		animation.play("run")
+		animation.travel("idle")
 
 func _input(event) -> void:
-	if jumpBlock or landBlock:
-		pass
-	# atack
-	elif event.is_action_pressed("jump") and grounded:
-		animation.play("jump")
-		jumpBlock = true
-		atackBlock = false
-	# jump
-	elif event.is_action_pressed("swordAtack") and !atackBlock:
-		animation.play("swordAtack")
-		atackBlock = true
-
-
-func _animation_finished(name: String) -> void:
-	match name:
-		"jump":
-			jumpBlock = false
-			velocity.y = jumpHeight
-		"land":
-			landBlock = false
-		"swordAtack":
-			atackBlock = false
+	pass
 
 func atack():
 	emit_signal("atacked")
