@@ -1,12 +1,15 @@
 extends Enemy
 
-func _physics_process(delta: float) -> void:
-	var dir := 0
+var dir := 0
 
-	if player.get_position() < get_position():
-		dir = -1
-	elif player.get_position() > get_position():
-		dir = 1
+func _physics_process(delta: float) -> void:
+	if grounded:
+		if player.get_position() < get_position():
+			dir = -1
+		elif player.get_position() > get_position():
+			dir = 1
+		else:
+			dir = 0
 	
 	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
 
@@ -25,7 +28,7 @@ func _physics_process(delta: float) -> void:
 func _process(_delta: float) -> void:
 	if anim.get_current_animation() == "atack":
 		pass
-	elif $atackbox.get_overlapping_bodies().size() != 0:
+	elif $atackbox.get_overlapping_bodies().size() != 0 and grounded:
 		anim.play("atack")
 	elif anim.get_current_animation() != "jump" and grounded:
 		anim.play("land")
