@@ -65,7 +65,8 @@ func _process(_delta: float) -> void:
 		animation.travel("idle")
 
 func _input(event) -> void:
-	pass
+	if event.is_action("swordAtack"):
+		animation.travel("swordAtack")
 
 func atack():
 	emit_signal("atacked")
