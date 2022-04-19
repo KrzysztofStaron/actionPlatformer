@@ -537,7 +537,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.0 ]
+"values": [ 0.1 ]
 }
 
 [node name="slime" instance=ExtResource( 1 )]
@@ -546,7 +546,6 @@ z_index = 1
 script = ExtResource( 2 )
 maxHealth = 100
 speed = 40
-speedMultiplayer = 1.0
 jumpHeight = -120
 knockbackReduction = 1
 atackDamage = 25
@@ -557,7 +556,7 @@ position = Vector2( 0, 4 )
 texture = ExtResource( 3 )
 hframes = 4
 vframes = 4
-frame = 9
+frame = 10
 region_rect = Rect2( 6.66583, 14.3943, 0.144131, 0.158957 )
 
 [node name="collision" parent="." index="1"]
@@ -569,7 +568,7 @@ polygon = PoolVector2Array( 0, 4, -8, 9, -12, 13, -12, 17, 12, 17, 12, 13, 8, 9 
 
 [node name="AnimationPlayer" parent="." index="4"]
 autoplay = "jump"
-playback_speed = 1.1
+playback_speed = 1.8
 anims/RESET = SubResource( 14 )
 anims/atack = SubResource( 2 )
 anims/death = SubResource( 3 )
