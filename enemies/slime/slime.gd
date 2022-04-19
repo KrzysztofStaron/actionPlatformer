@@ -2,15 +2,19 @@ extends Enemy
 
 var dir := 0
 
+
+func _ready() -> void:
+	if player.get_position() < get_position():
+		dir = -1
+	elif player.get_position() > get_position():
+		dir = 1
+
 func _physics_process(delta: float) -> void:
-	if grounded:
-		if player.get_position() < get_position():
-			dir = -1
-		elif player.get_position() > get_position():
-			dir = 1
-		else:
-			dir = 0
-	
+	if player.get_position() < get_position():
+		dir = -1
+	elif player.get_position() > get_position():
+		dir = 1
+		
 	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
 
 	applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)

@@ -90,11 +90,6 @@ func _input(event) -> void:
 		jumpBlock = true
 		atackBlock = false
 	# jump
-	elif event.is_action_pressed("jump"):
-		$jumpTimer.wait_time = autoJump
-		$jumpTimer.start()
-		atackBlock = false
-	# autoJump
 	elif event.is_action_pressed("swordAtack") and !atackBlock:
 		animation.play("swordAtack")
 		atackBlock = true
@@ -129,14 +124,4 @@ func takeDamage(damage : int):
 
 func _on_ground_state_changed(_body:Node) -> void:
 	var bodies = $groundSensor.get_overlapping_bodies()
-	grounded = bodies.size() > 0
-
-	if $jumpTimer.wait_time >= 0.06:
-		animation.play("jump")
-		jumpBlock = true
-
-		resetTimer()
-
-func resetTimer():
-	$jumpTimer.wait_time = 0.05
-	$jumpTimer.stop()
+	grounded = bodies.size() == 1

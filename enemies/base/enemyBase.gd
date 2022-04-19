@@ -36,7 +36,7 @@ func _ready() -> void:
 
 	health = maxHealth
 
-func _process(_delta: float) -> void:
+func _gjprocess(_delta: float) -> void:
 	if health <= 0:
 		anim.play("death")
 
@@ -57,4 +57,4 @@ func atack() -> void:
 
 func _on_ground_state_changed(_body:Node = Node.new()) -> void:
 		var bodies = $groundSensor.get_overlapping_bodies()
-		grounded = bodies.size() > 0
+		grounded = bodies.size() == 1
