@@ -247,7 +247,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.4, 0.9, 1.1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0.5, 0.05, 0.4, 0.05 ]
+"values": [ 0.2, 0.05, 0.4, 0.05 ]
 }
 
 [sub_resource type="Animation" id=33]
@@ -370,7 +370,7 @@ z_index = 2
 collision_layer = 8
 script = ExtResource( 2 )
 knockback = 50.0
-speedMultiplayer = 0.05
+speedMultiplayer = 0.5
 jumpHeight = -150
 dust = ExtResource( 6 )
 
@@ -380,7 +380,6 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 4 )
 hframes = 5
 vframes = 4
-frame = 12
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.5 )
