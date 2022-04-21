@@ -371,7 +371,7 @@ collision_layer = 8
 script = ExtResource( 2 )
 knockback = 50.0
 speedMultiplayer = 0.5
-jumpHeight = -150
+jumpHeight = -100
 dust = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
