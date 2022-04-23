@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/titleScreen/background/background_00.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/VT323-FONT.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/titleScreen/font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/titleScreen/titleScreen.gd" type="Script" id=3]
 [ext_resource path="res://environment.tres" type="Environment" id=4]
 [ext_resource path="res://scenes/titleScreen/background/background_11.png" type="Texture" id=5]
@@ -17,12 +17,6 @@
 [ext_resource path="res://scenes/titleScreen/background/background_05.png" type="Texture" id=15]
 [ext_resource path="res://scenes/titleScreen/background/background_06.png" type="Texture" id=16]
 [ext_resource path="res://scenes/titleScreen/background/background_08.png" type="Texture" id=17]
-
-[sub_resource type="DynamicFont" id=2]
-size = 14
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -79,6 +73,7 @@ margin_right = 346.0
 margin_bottom = 228.0
 
 [node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
+modulate = Color( 1, 0.952941, 0.0392157, 1 )
 margin_left = 148.0
 margin_top = 81.0
 margin_right = 202.0
@@ -87,7 +82,7 @@ margin_bottom = 152.0
 [node name="Start" type="Button" parent="CenterContainer/Buttons"]
 margin_right = 54.0
 margin_bottom = 21.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 2 )
 text = "Start"
 flat = true
 align = 0
@@ -96,7 +91,7 @@ align = 0
 margin_top = 25.0
 margin_right = 54.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 2 )
 text = "Options"
 flat = true
 align = 0
@@ -105,7 +100,7 @@ align = 0
 margin_top = 50.0
 margin_right = 54.0
 margin_bottom = 71.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = ExtResource( 2 )
 text = "Exit"
 flat = true
 align = 0
