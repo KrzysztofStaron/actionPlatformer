@@ -67,7 +67,7 @@ func _process(_delta: float) -> void:
 func _input(event) -> void:
 	if event.is_action_pressed("swordAtack"):
 		animation.travel("swordAtack")
-	elif event.is_action_pressed("jump"):
+	elif event.is_action_pressed("jump") and grounded:
 		velocity.y = jumpHeight
 
 
