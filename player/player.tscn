@@ -218,7 +218,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.5, 0.65, 1.05, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ PoolVector2Array( 0, 0, 0, 0, 0, 0 ), PoolVector2Array( -0.774194, -4.97778, 3.09678, -3.55556, 4.25807, -1.77778, 4.25807, 1.42222, 3.09678, 2.84444, -0.774194, 4.26667, -1.93549, 4.26667, -2.32258, -4.97778 ), PoolVector2Array( 0, 0, 0, 0, 0, 0 ), PoolVector2Array( 3.87097, -4.97778, 3.87097, 3.91111, -0.387097, 3.91111, -0.387097, -4.97778 ), PoolVector2Array( 0, 0, 0, 0, 0, 0 ) ]
+"values": [ PoolVector2Array( 0, 0, 0, 0, 0, 0 ), PoolVector2Array( -0.774194, -4.97778, 3.09678, -3.55556, 4.25807, -1.77778, 4.25807, 1.42222, 3.09678, 2.84444, -0.774194, 4.26667, -2.70968, 4.26667, -2.70968, -4.97778 ), PoolVector2Array( 0, 0, 0, 0, 0, 0 ), PoolVector2Array( 3.87097, -4.97778, 3.87097, 3.91111, -1.54839, 3.91111, -1.54839, -4.97778 ), PoolVector2Array( 0, 0, 0, 0, 0, 0 ) ]
 }
 tracks/5/type = "method"
 tracks/5/path = NodePath(".")
@@ -370,8 +370,8 @@ z_index = 2
 collision_layer = 8
 script = ExtResource( 2 )
 knockback = 50.0
-speedMultiplayer = 0.5
-jumpHeight = -138
+speedMultiplayer = 0.4
+jumpHeight = -145
 dust = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -380,6 +380,7 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 4 )
 hframes = 5
 vframes = 4
+frame = 11
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.5 )
