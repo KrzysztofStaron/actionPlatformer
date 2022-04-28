@@ -47,6 +47,9 @@ func _physics_process(delta: float) -> void:
 	velocity = move_and_slide(velocity)
 
 func _process(_delta: float) -> void:
+	if health <= 0:
+		die()
+
 	var dir := MoveInput.axis("move_left", "move_right")
 
 	match dir:
@@ -69,7 +72,14 @@ func _input(event) -> void:
 		animation.travel("swordAtack")
 	elif event.is_action_pressed("jump") and grounded:
 		velocity.y = jumpHeight
+		summon_dust()
 
+func die():
+	$playerAnimations.play("death")
+	$animation.active = false
+	print("deth")
+	set_process(false)
+	set_physics_process(false)
 
 func atack():
 	emit_signal("atacked")
