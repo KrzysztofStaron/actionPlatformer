@@ -101,6 +101,17 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
 
 [sub_resource type="Animation" id=27]
 resource_name = "idle"
@@ -445,6 +456,7 @@ graph_offset = Vector2( 0, 98.852 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
+pause_mode = 2
 z_index = 2
 collision_layer = 8
 script = ExtResource( 2 )

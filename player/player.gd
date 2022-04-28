@@ -75,6 +75,7 @@ func _input(event) -> void:
 		summon_dust()
 
 func die():
+	get_tree().paused = true
 	$playerAnimations.play("death")
 	$animation.active = false
 	print("deth")
