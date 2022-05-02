@@ -43,6 +43,7 @@ func die() -> void:
 	print("deth")
 	set_process(false)
 	set_physics_process(false)
+	$data/move.set_physics_process(false)
 
 func takeDamage(damage : int) -> void:
 	get_node("camera/shake").start()

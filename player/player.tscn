@@ -322,7 +322,7 @@ tracks/6/enabled = true
 tracks/6/keys = {
 "times": PoolRealArray( 0, 0.4, 0.9, 1.1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 0.2, 0.05, 0.4, 0.05 ]
 }
 
@@ -469,10 +469,8 @@ position = Vector2( 0, 1 )
 texture = ExtResource( 1 )
 hframes = 2
 vframes = 2
-frame = 1
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 0.5 )
 shape = SubResource( 24 )
 
 [node name="data" type="Node" parent="."]
@@ -489,7 +487,7 @@ maxSpeed = 70.0
 step = 210
 dust = ExtResource( 6 )
 jumpHeight = -145
-speedMultiplayer = 0.6
+speedMultiplayer = 0.2
 
 [node name="playerAnimations" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 51 )
