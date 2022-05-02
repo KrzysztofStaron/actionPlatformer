@@ -223,7 +223,7 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath(".:speedMultiplayer")
+tracks/4/path = NodePath("data/move:speedMultiplayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -299,25 +299,13 @@ tracks/4/keys = {
 "update": 1,
 "values": [ PoolVector2Array( 0, 0, 0, 0, 0, 0 ), PoolVector2Array( -0.774194, -4.97778, 3.09678, -3.55556, 4.25807, -1.77778, 4.25807, 1.42222, 3.09678, 2.84444, -0.774194, 4.26667, -2.70968, 4.26667, -2.70968, -4.97778 ), PoolVector2Array( 0, 0, 0, 0, 0, 0 ), PoolVector2Array( 3.87097, -4.97778, 3.87097, 3.91111, -1.54839, 3.91111, -1.54839, -4.97778 ), PoolVector2Array( 0, 0, 0, 0, 0, 0 ) ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath(".:speedMultiplayer")
+tracks/5/type = "method"
+tracks/5/path = NodePath("data/atack")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.4, 0.9, 1.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0.2, 0.05, 0.4, 0.05 ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath("data/atack")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0.55, 1.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
@@ -327,6 +315,18 @@ tracks/6/keys = {
 "args": [  ],
 "method": "atack"
 } ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("data/move:speedMultiplayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.4, 0.9, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.2, 0.05, 0.4, 0.05 ]
 }
 
 [sub_resource type="Animation" id=33]
@@ -383,7 +383,7 @@ tracks/3/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath(".:speedMultiplayer")
+tracks/4/path = NodePath("data/move:speedMultiplayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -462,9 +462,6 @@ pause_mode = 2
 z_index = 2
 collision_layer = 8
 script = ExtResource( 2 )
-speedMultiplayer = 0.05
-jumpHeight = -145
-dust = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 25 )
@@ -508,6 +505,9 @@ knockback = 50.0
 script = ExtResource( 11 )
 maxSpeed = 70.0
 step = 210
+dust = ExtResource( 6 )
+jumpHeight = -145
+speedMultiplayer = 0.6
 
 [node name="hitAim" parent="." instance=ExtResource( 8 )]
 
@@ -525,5 +525,5 @@ anim_player = NodePath("../playerAnimations")
 active = true
 parameters/playback = SubResource( 29 )
 
-[connection signal="body_entered" from="groundSensor" to="." method="_on_ground_state_changed"]
-[connection signal="body_exited" from="groundSensor" to="." method="_on_ground_state_changed"]
+[connection signal="body_entered" from="groundSensor" to="data/move" method="_on_ground_state_changed"]
+[connection signal="body_exited" from="groundSensor" to="data/move" method="_on_ground_state_changed"]

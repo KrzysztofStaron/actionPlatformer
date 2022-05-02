@@ -150,7 +150,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -546,6 +546,7 @@ z_index = 1
 script = ExtResource( 2 )
 maxHealth = 100
 speed = 40
+speedMultiplayer = 0.2
 jumpHeight = -120
 knockbackReduction = 1
 atackDamage = 25
@@ -553,10 +554,10 @@ atackDamage = 25
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 13 )
 position = Vector2( 0, 4 )
-texture = ExtResource( 3 )
-hframes = 4
-vframes = 4
-frame = 10
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 3
+frame = 3
 region_rect = Rect2( 6.66583, 14.3943, 0.144131, 0.158957 )
 
 [node name="collision" parent="." index="1"]
@@ -568,7 +569,7 @@ polygon = PoolVector2Array( 0, 4, -8, 9, -12, 13, -12, 17, 12, 17, 12, 13, 8, 9 
 
 [node name="AnimationPlayer" parent="." index="4"]
 autoplay = "jump"
-playback_speed = 1.8
+playback_speed = 0.9
 anims/RESET = SubResource( 14 )
 anims/atack = SubResource( 2 )
 anims/death = SubResource( 3 )
