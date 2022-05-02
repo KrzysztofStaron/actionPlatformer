@@ -45,6 +45,7 @@ func die() -> void:
 	set_physics_process(false)
 
 func takeDamage(damage : int) -> void:
+	get_node("camera/shake").start()
 	$hitAim.play("hit")
 	health -= damage
 	print(damage)

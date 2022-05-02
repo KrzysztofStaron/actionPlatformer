@@ -1,7 +1,5 @@
 extends Node
 
-signal atacked
-
 export var atackDamage : int
 export var atackRandomines : int
 export var knockback : float
@@ -9,7 +7,7 @@ export var knockback : float
 func atack() -> void:
 	var atackBox := get_parent().get_parent().get_node("atackbox")
 
-	emit_signal("atacked")
+	get_parent().get_parent().get_node("camera/shake").start()
 
 	var bodies : Array = atackBox.get_overlapping_bodies()
 	for object in bodies:
