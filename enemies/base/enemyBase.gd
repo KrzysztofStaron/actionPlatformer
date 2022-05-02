@@ -4,6 +4,7 @@ class_name Enemy
 onready var player = get_tree().get_nodes_in_group("player")[0]
 
 var grounded := false
+var dir := 0
 
 var gravitation : int
 var maxGravitation : int
@@ -39,6 +40,22 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if health <= 0:
 		anim.play("death")
+
+func _physics_process(delta: float) -> void:
+	if knockbackReduction == 999:
+		applyedKnockback = 0
+	
+	applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)
+	if anim.get_current_animation() != "death":
+		if applyedKnockback == 0:
+			velocity.x = dir * speed * speedMultiplayer
+		else:
+			velocity.x = applyedKnockback
+	else:
+		applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)
+		velocity.x = applyedKnockback
+		
+	velocity.x = move_and_slide(Vector2(velocity.x, 0)).x
 
 func takeDamage(dmg: int, knockback: float) -> void:
 	applyedKnockback = knockback

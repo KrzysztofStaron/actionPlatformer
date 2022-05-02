@@ -1,8 +1,5 @@
 extends Enemy
 
-var dir := 0
-
-
 func _ready() -> void:
 	if player.get_position() < get_position():
 		dir = -1
@@ -16,16 +13,6 @@ func _physics_process(delta: float) -> void:
 		dir = 1
 		
 	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
-
-	applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)
-	if anim.get_current_animation() != "death":
-		if applyedKnockback == 0:
-			velocity.x = dir * speed * speedMultiplayer
-		else:
-			velocity.x = applyedKnockback
-	else:
-		applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)
-		velocity.x = applyedKnockback
 
 	velocity = move_and_slide(velocity)
 
