@@ -2,14 +2,11 @@ extends KinematicBody2D
 
 class_name Player
 
-signal atacked
-
 var velocity := Vector2.ZERO
 
-export var knockback := 10.0
+var maxSpeed : float
+var step : float
 
-export var maxSpeed := 70.0
-export var step := 210
 export var speedMultiplayer := 1.0
 
 var gravitation : int
@@ -20,8 +17,9 @@ export var autoJump := 0.15
 
 export var dust : PackedScene
 
-export var atackDamage := 34
-export var atackRandomines := 4
+var atackDamage : float
+var atackRandomines : float
+var knockback : float
 
 export var maxHealth := 100
 var health : int
@@ -38,6 +36,10 @@ func _ready() -> void:
 	gravitation = settings.gravitation
 	maxGravitation = settings.maxGravitation
 
+	var moveData := $data/move
+	maxSpeed = moveData.maxSpeed
+	step = moveData.step
+	
 func _physics_process(delta: float) -> void:
 	var dir := MoveInput.axis("move_left", "move_right")
 
@@ -81,13 +83,6 @@ func die():
 	print("deth")
 	set_process(false)
 	set_physics_process(false)
-
-func atack():
-	emit_signal("atacked")
-	var objects = $atackbox.get_overlapping_bodies()
-	for object in objects:
-		# if object is Enemy:
-		object.takeDamage(atackDamage + rand_range(-atackRandomines, atackRandomines), knockback * $atackbox.scale.x)
 
 func summon_dust():
 	var newDust := dust.instance()
