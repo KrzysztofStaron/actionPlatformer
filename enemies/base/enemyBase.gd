@@ -42,7 +42,7 @@ func _process(_delta: float) -> void:
 		anim.play("death")
 
 func _physics_process(delta: float) -> void:
-	if knockbackReduction == 999:
+	if knockbackReduction >= 999:
 		applyedKnockback = 0
 	
 	applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)
