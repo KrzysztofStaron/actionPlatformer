@@ -11,8 +11,6 @@ func _physics_process(delta: float) -> void:
 		dir = -1
 	elif player.get_position() > get_position():
 		dir = 1
-		
-	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
 
 	velocity = move_and_slide(velocity)
 
@@ -23,8 +21,6 @@ func _process(_delta: float) -> void:
 		anim.play("atack")
 	elif anim.get_current_animation() != "jump" and grounded:
 		anim.play("land")
-
-
 
 func _on_AnimationPlayer_animation_finished(anim_name:String) -> void:
 	if anim_name == "atack":

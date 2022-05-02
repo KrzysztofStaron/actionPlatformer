@@ -42,20 +42,22 @@ func _process(_delta: float) -> void:
 		anim.play("death")
 
 func _physics_process(delta: float) -> void:
-	if knockbackReduction >= 999:
-		applyedKnockback = 0
-	
-	applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)
-	if anim.get_current_animation() != "death":
-		if applyedKnockback == 0:
-			velocity.x = dir * speed * speedMultiplayer
+	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
+		
+	if knockbackReduction < 999:
+		applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)
+		if anim.get_current_animation() != "death":
+			if applyedKnockback == 0:
+				velocity.x = dir * speed * speedMultiplayer
+			else:
+				velocity.x = applyedKnockback
 		else:
+			applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)
 			velocity.x = applyedKnockback
 	else:
-		applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)
-		velocity.x = applyedKnockback
+		applyedKnockback = 0
 		
-	velocity.x = move_and_slide(Vector2(velocity.x, 0)).x
+	velocity = move_and_slide(velocity)
 
 func takeDamage(dmg: int, knockback: float) -> void:
 	applyedKnockback = knockback

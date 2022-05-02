@@ -602,7 +602,6 @@ anims/walk = SubResource( 33 )
 [node name="animation" type="AnimationTree" parent="."]
 tree_root = ExtResource( 14 )
 anim_player = NodePath("../playerAnimations")
-active = true
 parameters/playback = SubResource( 60 )
 
 [node name="groundSensor" type="Area2D" parent="."]

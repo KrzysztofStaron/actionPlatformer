@@ -286,6 +286,7 @@ vframes = 3
 frame = 8
 
 [node name="collision" parent="." index="1"]
+position = Vector2( 0, -1 )
 shape = SubResource( 8 )
 
 [node name="AnimationPlayer" parent="." index="4"]
