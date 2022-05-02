@@ -35,7 +35,7 @@ func _input(event) -> void:
 		velocity.y = jumpHeight
 		summon_dust()
 
-func _on_ground_state_changed(_body:Node) -> void:
+func update_grounded(_body:Node) -> void:
 	var bodies = player.get_node("groundSensor").get_overlapping_bodies()
 	grounded = bodies.size() == 1
 
