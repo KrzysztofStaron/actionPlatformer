@@ -6,7 +6,7 @@ func _ready() -> void:
 	elif player.get_position() > get_position():
 		dir = 1
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player.get_position() < get_position():
 		dir = -1
 	elif player.get_position() > get_position():
