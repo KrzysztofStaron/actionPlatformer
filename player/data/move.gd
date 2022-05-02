@@ -39,7 +39,7 @@ func _on_ground_state_changed(_body:Node) -> void:
 	var bodies = player.get_node("groundSensor").get_overlapping_bodies()
 	grounded = bodies.size() == 1
 
-func summon_dust():
+func summon_dust() -> void:
 	var newDust := dust.instance()
 	get_parent().add_child(newDust)
 	newDust.set_global_position(player.get_global_position() + Vector2(0, 9))

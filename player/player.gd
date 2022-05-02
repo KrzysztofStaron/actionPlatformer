@@ -38,7 +38,7 @@ func _input(event) -> void:
 	if event.is_action_pressed("swordAtack"):
 		animation.travel("swordAtack")
 
-func die():
+func die() -> void:
 	get_tree().paused = true
 	$playerAnimations.play("death")
 	$animation.active = false
@@ -46,7 +46,7 @@ func die():
 	set_process(false)
 	set_physics_process(false)
 
-func takeDamage(damage : int):
+func takeDamage(damage : int) -> void:
 	$hitAim.play("hit")
 	health -= damage
 	print(damage)

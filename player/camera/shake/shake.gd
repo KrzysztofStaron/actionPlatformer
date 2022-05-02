@@ -8,7 +8,7 @@ onready var camera = get_parent()
 const TRANS = Tween.TRANS_SINE
 const EASE = Tween.EASE_IN_OUT
 
-func start(newAmplitude := 2, duration := 0.1, frequency := 8, newPriority := 0):
+func start(newAmplitude := 2, duration := 0.1, frequency := 8, newPriority := 0) -> void:
 	if priority <= newPriority:
 		amplitude = newAmplitude
 		priority = newPriority
@@ -21,7 +21,7 @@ func start(newAmplitude := 2, duration := 0.1, frequency := 8, newPriority := 0)
 
 		_new_shake()
 
-func _new_shake():
+func _new_shake() -> void:
 	var rand := Vector2()
 	rand.x = rand_range(-amplitude, amplitude)
 	rand.y = rand_range(-amplitude, amplitude)
@@ -29,7 +29,7 @@ func _new_shake():
 	$shakeTween.interpolate_property(camera, "offset", camera.offset, rand, $frequency.wait_time, TRANS, EASE)
 	$shakeTween.start()
 
-func _reset():
+func _reset() -> void:
 	$shakeTween.interpolate_property(camera, "offset", camera.offset, Vector2(), $frequency.wait_time, TRANS, EASE)
 	$shakeTween.start()
 

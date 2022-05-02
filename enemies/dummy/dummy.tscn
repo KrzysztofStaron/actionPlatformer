@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://enemies/base/enemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://enemies/dummy/dummy.png" type="Texture" id=2]
 [ext_resource path="res://enemies/dummy/died.png" type="Texture" id=3]
 [ext_resource path="res://enemies/base/flash.tres" type="Shader" id=4]
+[ext_resource path="res://enemies/base/enemyBase.gd" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
@@ -274,7 +275,8 @@ tracks/5/keys = {
 }
 
 [node name="dummy" instance=ExtResource( 1 )]
-maxHealth = 120
+script = ExtResource( 5 )
+maxHealth = 150
 
 [node name="Sprite" parent="." index="0"]
 material = SubResource( 7 )
