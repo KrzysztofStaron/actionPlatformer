@@ -2,8 +2,6 @@ extends KinematicBody2D
 
 class_name Player
 
-export var autoJump := 0.15
-
 export var maxHealth := 100
 var health : int
 
