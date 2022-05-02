@@ -1,0 +1,75 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=25 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=53]
+animation = "death"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=60]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "run"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "swordAtack"
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=55]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=56]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
+
+[resource]
+states/death/node = SubResource( 53 )
+states/death/position = Vector2( 97, 209 )
+states/idle/node = SubResource( 34 )
+states/idle/position = Vector2( 395, 127 )
+states/jump/node = SubResource( 60 )
+states/jump/position = Vector2( 933, 209 )
+states/run/node = SubResource( 39 )
+states/run/position = Vector2( 299, 342 )
+states/swordAtack/node = SubResource( 38 )
+states/swordAtack/position = Vector2( 681, 127 )
+states/walk/node = SubResource( 40 )
+states/walk/position = Vector2( 492, 342 )
+transitions = [ "idle", "run", SubResource( 41 ), "run", "idle", SubResource( 42 ), "idle", "walk", SubResource( 43 ), "walk", "idle", SubResource( 44 ), "run", "walk", SubResource( 45 ), "walk", "run", SubResource( 46 ), "idle", "swordAtack", SubResource( 47 ), "run", "swordAtack", SubResource( 48 ), "walk", "swordAtack", SubResource( 49 ), "swordAtack", "idle", SubResource( 50 ), "idle", "death", SubResource( 54 ), "swordAtack", "death", SubResource( 55 ), "run", "death", SubResource( 56 ), "walk", "death", SubResource( 57 ), "idle", "jump", SubResource( 61 ), "run", "jump", SubResource( 62 ), "walk", "jump", SubResource( 63 ), "jump", "idle", SubResource( 64 ) ]
+start_node = "idle"
+end_node = "death"
+graph_offset = Vector2( -16, 91.2964 )

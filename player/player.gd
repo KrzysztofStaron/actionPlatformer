@@ -16,16 +16,16 @@ func _process(_delta: float) -> void:
 		die()
 
 	var dir := MoveInput.axis("move_left", "move_right")
-
-	match dir:
-		-1:
-			$Sprite.flip_h = true
-			$atackbox.set_scale(Vector2(-1, 1))
-		1:
-			$Sprite.flip_h = false
-			$atackbox.set_scale(Vector2(1, 1))
-
-	if dir != 0 and Input.is_action_pressed("walk"):
+	
+	if dir != 0:
+		$Sprite.flip_h = dir < 0
+		$atackbox.set_scale(Vector2(dir, 1))
+		
+	var grounded : bool = $data/move.grounded
+	
+	if !grounded:
+		animation.travel("jump")
+	elif dir != 0 and Input.is_action_pressed("walk"):
 		animation.travel("walk")
 	elif dir != 0:
 		animation.travel("run")

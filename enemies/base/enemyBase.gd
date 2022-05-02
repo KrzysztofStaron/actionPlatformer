@@ -30,7 +30,7 @@ func _jump() -> void:
 func _ready() -> void:
 	_on_ground_state_changed()
 	var settings = preload("res://settings.gd")
-	
+
 	gravitation = settings.gravitation
 	maxGravitation = settings.maxGravitation
 
