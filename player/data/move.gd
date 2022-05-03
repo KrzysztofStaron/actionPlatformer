@@ -15,6 +15,7 @@ export var dust : PackedScene
 export var jumpHeight := -90
 
 export var speedMultiplayer := 1.0
+export var canJump := true
 
 func _ready() -> void:
 	var settings = preload("res://settings.gd")
@@ -31,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	velocity = player.move_and_slide(velocity)
 
 func _input(event) -> void:
-	if event.is_action_pressed("jump") and grounded:
+	if event.is_action_pressed("jump") and grounded and canJump:
 		velocity.y = jumpHeight
 		summon_dust()
 

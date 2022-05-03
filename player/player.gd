@@ -7,6 +7,8 @@ var health : int
 
 onready var animation = $animation.get("parameters/playback")
 
+var grounded : bool
+
 func _ready() -> void:
 	$animation.active = true
 	health = maxHealth
@@ -15,14 +17,13 @@ func _process(_delta: float) -> void:
 	if health <= 0:
 		die()
 
+	grounded = $data/move.grounded
 	var dir := MoveInput.axis("move_left", "move_right")
-	
+
 	if dir != 0:
 		$Sprite.flip_h = dir < 0
 		$atackbox.set_scale(Vector2(dir, 1))
-		
-	var grounded : bool = $data/move.grounded
-	
+
 	if !grounded:
 		animation.travel("jump")
 	elif dir != 0 and Input.is_action_pressed("walk"):
@@ -34,7 +35,10 @@ func _process(_delta: float) -> void:
 
 func _input(event) -> void:
 	if event.is_action_pressed("swordAtack"):
-		animation.travel("swordAtack")
+			if grounded:
+				animation.travel("swordAtack")
+			else:
+				animation.travel("airSwordAtack")
 
 func die() -> void:
 	get_tree().paused = true

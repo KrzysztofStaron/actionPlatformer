@@ -1,4 +1,7 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=25 format=2]
+[gd_resource type="AnimationNodeStateMachine" load_steps=28 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=65]
+animation = "airSworkAtack"
 
 [sub_resource type="AnimationNodeAnimation" id=53]
 animation = "death"
@@ -56,20 +59,28 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=64]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
+switch_mode = 2
+auto_advance = true
+
 [resource]
+states/airSworkAtack/node = SubResource( 65 )
+states/airSworkAtack/position = Vector2( 552, 24.9681 )
 states/death/node = SubResource( 53 )
 states/death/position = Vector2( 97, 209 )
 states/idle/node = SubResource( 34 )
 states/idle/position = Vector2( 395, 127 )
 states/jump/node = SubResource( 60 )
-states/jump/position = Vector2( 933, 209 )
+states/jump/position = Vector2( 926, 122 )
 states/run/node = SubResource( 39 )
 states/run/position = Vector2( 299, 342 )
 states/swordAtack/node = SubResource( 38 )
 states/swordAtack/position = Vector2( 681, 127 )
 states/walk/node = SubResource( 40 )
 states/walk/position = Vector2( 492, 342 )
-transitions = [ "idle", "run", SubResource( 41 ), "run", "idle", SubResource( 42 ), "idle", "walk", SubResource( 43 ), "walk", "idle", SubResource( 44 ), "run", "walk", SubResource( 45 ), "walk", "run", SubResource( 46 ), "idle", "swordAtack", SubResource( 47 ), "run", "swordAtack", SubResource( 48 ), "walk", "swordAtack", SubResource( 49 ), "swordAtack", "idle", SubResource( 50 ), "idle", "death", SubResource( 54 ), "swordAtack", "death", SubResource( 55 ), "run", "death", SubResource( 56 ), "walk", "death", SubResource( 57 ), "idle", "jump", SubResource( 61 ), "run", "jump", SubResource( 62 ), "walk", "jump", SubResource( 63 ), "jump", "idle", SubResource( 64 ) ]
+transitions = [ "idle", "run", SubResource( 41 ), "run", "idle", SubResource( 42 ), "idle", "walk", SubResource( 43 ), "walk", "idle", SubResource( 44 ), "run", "walk", SubResource( 45 ), "walk", "run", SubResource( 46 ), "idle", "swordAtack", SubResource( 47 ), "run", "swordAtack", SubResource( 48 ), "walk", "swordAtack", SubResource( 49 ), "swordAtack", "idle", SubResource( 50 ), "idle", "death", SubResource( 54 ), "swordAtack", "death", SubResource( 55 ), "run", "death", SubResource( 56 ), "walk", "death", SubResource( 57 ), "idle", "jump", SubResource( 61 ), "run", "jump", SubResource( 62 ), "walk", "jump", SubResource( 63 ), "jump", "idle", SubResource( 64 ), "jump", "airSworkAtack", SubResource( 66 ), "airSworkAtack", "idle", SubResource( 67 ) ]
 start_node = "idle"
 end_node = "death"
-graph_offset = Vector2( -16, 91.2964 )
+graph_offset = Vector2( -16, 21.8536 )
