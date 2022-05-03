@@ -33,8 +33,8 @@ config/windows_native_icon="res://assets/GameIcon.ico"
 
 [autoload]
 
-MoveInput="*res://assets/autoLoad/moveInput.gd"
-GameManager="*res://assets/autoLoad/gameManager.gd"
+MoveInput="*res://assets/moveInput.gd"
+GameManager="*res://assets/gameManager.gd"
 
 [debug]
 

@@ -23,6 +23,8 @@ var applyedKnockback : float
 
 export var atackDamage : int
 
+export var gravitationEnabled : bool = true
+
 onready var anim : AnimationPlayer = $AnimationPlayer
 
 func _jump() -> void:
@@ -42,8 +44,9 @@ func _process(_delta: float) -> void:
 		anim.play("death")
 
 func _physics_process(delta: float) -> void:
-	velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
-		
+	if gravitationEnabled:
+		velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
+
 	if knockbackReduction < 999:
 		applyedKnockback = move_toward(applyedKnockback, 0, knockbackReduction + 1 * delta)
 		if anim.get_current_animation() != "death":
@@ -56,7 +59,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = applyedKnockback
 	else:
 		applyedKnockback = 0
-		
+
 	velocity = move_and_slide(velocity)
 
 func takeDamage(dmg: int, knockback: float) -> void:

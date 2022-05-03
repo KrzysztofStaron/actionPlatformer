@@ -3,8 +3,7 @@ extends Node
 # [negative_input_name (from Input Map), input_type]
 # e.g. ["ui_left", "move_horizontal"]
 var _correlations := [
-	["move_left", "move_horizontal"],
-	["move_up", "move_vertical"],
+	["move_left", "horizontal"]
 ]
 
 var _first_pressed : Dictionary
@@ -41,4 +40,4 @@ func vector(n1 : String, p1 : String, n2 : String, p2 : String, reversed := fals
 		dir = dir.normalized()
 	
 	return dir
-	
+
