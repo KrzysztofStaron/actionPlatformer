@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://player/textures/idle.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
@@ -25,81 +25,6 @@ shader_param/flash = 0.0
 [sub_resource type="CapsuleShape2D" id=24]
 radius = 6.0
 height = 12.0
-
-[sub_resource type="Animation" id=51]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("atackbox/CollisionPolygon2D:polygon")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ PoolVector2Array( 3.87097, -4.97778, 3.87097, 3.91111, -0.387097, 3.91111, -0.387097, -4.97778 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("data/move:canJump")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("atackbox/CollisionPolygon2D:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 2.583, 2.813 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("atackbox/CollisionPolygon2D:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -5.55313, 4 ) ]
-}
 
 [sub_resource type="Animation" id=63]
 resource_name = "airSwordAtack"
@@ -740,9 +665,9 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 25 )
 position = Vector2( 0, 1 )
-texture = ExtResource( 16 )
+texture = ExtResource( 1 )
+hframes = 2
 vframes = 2
-frame = 1
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 24 )
@@ -764,7 +689,6 @@ jumpHeight = -145
 speedMultiplayer = 0.2
 
 [node name="playerAnimations" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 51 )
 anims/airSwordAtack = SubResource( 63 )
 anims/death = SubResource( 52 )
 anims/fall = SubResource( 59 )

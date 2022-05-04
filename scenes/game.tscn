@@ -63,4 +63,4 @@ tile_data = PoolIntArray( 524316, 0, 0, 524317, 0, 2, 589851, 0, 0, 589852, 0, 1
 environment = ExtResource( 1 )
 
 [node name="slime" parent="." instance=ExtResource( 6 )]
-position = Vector2( 243, 142 )
+position = Vector2( 360, 136 )
