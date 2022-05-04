@@ -103,8 +103,8 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=63]
 resource_name = "airSwordAtack"
-length = 0.3
-step = 0.06
+length = 0.35
+step = 0.07
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -148,7 +148,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24 ),
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4 ]
@@ -160,7 +160,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.12 ),
+"times": PoolRealArray( 0.14 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -174,7 +174,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0.06, 0.24 ),
+"times": PoolRealArray( 0.07, 0.21 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ PoolVector2Array( -5.20591, 3.91042, -3.27018, 0, 7.95708, -4.6214, 7.56993, 3.91042, -0.560152, 4.97689 ), PoolVector2Array( 0, 0, 0, 0, 0, 0 ) ]
@@ -186,7 +186,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.06 ),
+"times": PoolRealArray( 0.07 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 2.583, 2.813 ) ]
@@ -198,7 +198,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.06 ),
+"times": PoolRealArray( 0.07 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -5.55313, 4 ) ]
