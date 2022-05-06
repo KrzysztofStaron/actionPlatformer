@@ -2,15 +2,15 @@ extends Enemy
 
 func _ready() -> void:
 	if player.get_position() < get_position():
-		dir = -1
-	elif player.get_position() > get_position():
 		dir = 1
+	elif player.get_position() > get_position():
+		dir = -1
 
 func _physics_process(_delta: float) -> void:
 	if player.get_position() < get_position():
-		dir = -1
-	elif player.get_position() > get_position():
 		dir = 1
+	elif player.get_position() > get_position():
+		dir = -1
 
 	velocity = move_and_slide(velocity)
 

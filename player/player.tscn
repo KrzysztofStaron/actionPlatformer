@@ -21,8 +21,9 @@ shader = ExtResource( 7 )
 shader_param/flashColor = Color( 1, 1, 1, 1 )
 shader_param/flash = 0.0
 
-[sub_resource type="RectangleShape2D" id=64]
-extents = Vector2( 5, 10.5 )
+[sub_resource type="CapsuleShape2D" id=64]
+radius = 5.0
+height = 12.0
 
 [sub_resource type="Animation" id=63]
 resource_name = "airSwordAtack"
@@ -626,8 +627,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=60]
 
-[sub_resource type="CircleShape2D" id=12]
-radius = 3.0
+[sub_resource type="RectangleShape2D" id=65]
+extents = Vector2( 5, 2 )
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
 pause_mode = 2
@@ -643,7 +644,7 @@ hframes = 2
 vframes = 2
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 1.5 )
+position = Vector2( -1, 1 )
 shape = SubResource( 64 )
 
 [node name="data" type="Node" parent="."]
@@ -685,8 +686,8 @@ collision_layer = 0
 
 [node name="groundSensor" type="CollisionShape2D" parent="groundSensor"]
 self_modulate = Color( 0.054902, 1, 0, 1 )
-position = Vector2( 0, -1 )
-shape = SubResource( 12 )
+position = Vector2( -1, 1 )
+shape = SubResource( 65 )
 
 [node name="atackbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -696,6 +697,9 @@ collision_mask = 2
 position = Vector2( -5.55313, 4 )
 scale = Vector2( 2.583, 2.813 )
 polygon = PoolVector2Array( 3.87097, -4.97778, 3.87097, 3.91111, -0.387097, 3.91111, -0.387097, -4.97778 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -5, -8, 3, -8, 4, 8, -6, 8 )
 
 [connection signal="body_entered" from="groundSensor" to="data/move" method="update_grounded"]
 [connection signal="body_exited" from="groundSensor" to="data/move" method="update_grounded"]

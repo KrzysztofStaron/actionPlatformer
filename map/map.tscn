@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://map/Demo_mapp.png" type="Texture" id=1]
 [ext_resource path="res://map/platform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemies/slime/slime.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemies/dummy/dummy.tscn" type="PackedScene" id=4]
 
 [node name="map" type="StaticBody2D"]
 collision_mask = 0
@@ -26,3 +28,15 @@ polygon = PoolVector2Array( -39, -152, -17, -152, -17, -148, -39, -148 )
 [node name="platform4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 92, 98 )
 polygon = PoolVector2Array( -12, 8, 10, 8, 10, 12, -12, 12 )
+
+[node name="dummy" parent="." instance=ExtResource( 4 )]
+position = Vector2( -135, 10 )
+
+[node name="dummy" parent="dummy" instance=ExtResource( 4 )]
+position = Vector2( 66, -2 )
+
+[node name="dummy2" parent="dummy" instance=ExtResource( 4 )]
+position = Vector2( 105, -172 )
+
+[node name="slime" parent="dummy" instance=ExtResource( 3 )]
+position = Vector2( 231, 36 )
