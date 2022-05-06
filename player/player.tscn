@@ -685,7 +685,7 @@ script = ExtResource( 11 )
 maxSpeed = 70.0
 step = 210
 dust = ExtResource( 6 )
-jumpHeight = -145
+jumpHeight = -170
 speedMultiplayer = 0.2
 
 [node name="playerAnimations" type="AnimationPlayer" parent="."]
