@@ -17,22 +17,22 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "GridItem",
 "language": "GDScript",
-"path": "res://scenes/inventory/GridItem.gd"
+"path": "res://screens/inventory/GridItem.gd"
 }, {
 "base": "Control",
 "class": "Inventory",
 "language": "GDScript",
-"path": "res://scenes/inventory/Inventory.gd"
+"path": "res://screens/inventory/Inventory.gd"
 }, {
 "base": "Object",
 "class": "Item",
 "language": "GDScript",
-"path": "res://scenes/inventory/Item.gd"
+"path": "res://screens/inventory/Item.gd"
 }, {
 "base": "Node",
 "class": "Items",
 "language": "GDScript",
-"path": "res://scenes/inventory/Items.gd"
+"path": "res://screens/inventory/Items.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Merchants"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://screens/game.tscn"
 config/icon="res://assets/GameIcon.png"
 config/windows_native_icon="res://assets/GameIcon.ico"
 
