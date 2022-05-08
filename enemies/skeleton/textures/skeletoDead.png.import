@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/walk.png-2f2b0c366b0c6e0ba70c40dcbf50cca1.stex"
+path="res://.import/skeletoDead.png-5cfbeeefee52619e1df46361e5abecc4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/skeleton/textures/walk.png"
-dest_files=[ "res://.import/walk.png-2f2b0c366b0c6e0ba70c40dcbf50cca1.stex" ]
+source_file="res://enemies/skeleton/textures/skeletoDead.png"
+dest_files=[ "res://.import/skeletoDead.png-5cfbeeefee52619e1df46361e5abecc4.stex" ]
 
 [params]
 

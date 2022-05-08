@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://environment.tres" type="Environment" id=1]
-[ext_resource path="res://map/map.tscn" type="PackedScene" id=2]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://player/camera/camera.tscn" type="PackedScene" id=4]
-[ext_resource path="res://player/camera/shake/shake.tscn" type="PackedScene" id=5]
+[ext_resource path="res://player/camera/shake/shake.tscn" type="PackedScene" id=2]
+[ext_resource path="res://map/map.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/camera/camera.tscn" type="PackedScene" id=5]
 
 [node name="game" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource( 3 )]
+[node name="player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 145, 176 )
 
-[node name="camera" parent="player" instance=ExtResource( 4 )]
+[node name="camera" parent="player" instance=ExtResource( 5 )]
 position = Vector2( 0, -64 )
 current = true
 zoom = Vector2( 1, 1 )
@@ -21,10 +21,10 @@ smoothing_enabled = true
 drag_margin_bottom = 0.0
 editor_draw_drag_margin = true
 
-[node name="shake" parent="player/camera" instance=ExtResource( 5 )]
+[node name="shake" parent="player/camera" instance=ExtResource( 2 )]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
 
-[node name="map" parent="." instance=ExtResource( 2 )]
+[node name="map" parent="." instance=ExtResource( 3 )]
 position = Vector2( 339, 341 )
