@@ -697,6 +697,7 @@ hframes = 5
 vframes = 5
 
 [node name="death" type="Sprite" parent="."]
+visible = false
 show_behind_parent = true
 position = Vector2( 2.22222, 7.77778 )
 scale = Vector2( 5, 5 )

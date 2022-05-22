@@ -10,6 +10,7 @@ onready var animation = $animation.get("parameters/playback")
 var grounded : bool
 
 func _ready() -> void:
+	$death.show()
 	$animation.active = true
 	health = maxHealth
 
