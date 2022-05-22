@@ -1,20 +1,15 @@
 extends Enemy
 
-func _ready() -> void:
-	if player.get_position() < get_position():
-		dir = 1
-	elif player.get_position() > get_position():
-		dir = -1
-
 func _physics_process(_delta: float) -> void:
-	if player.get_position() < get_position():
-		dir = 1
-	elif player.get_position() > get_position():
+	if player.get_global_position() < get_global_position():
 		dir = -1
+	elif player.get_global_position() > get_global_position():
+		dir = 1
 
 	velocity = move_and_slide(velocity)
 
 func _process(_delta: float) -> void:
+	print(player.get_position() < get_position())
 	if anim.get_current_animation() == "atack":
 		pass
 	elif $atackbox.get_overlapping_bodies().size() != 0 and grounded:

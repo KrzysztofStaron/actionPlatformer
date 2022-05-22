@@ -44,6 +44,7 @@ func _process(_delta: float) -> void:
 		anim.play("death")
 
 func _physics_process(delta: float) -> void:
+	player = get_tree().get_nodes_in_group("player")[0]
 	if gravitationEnabled:
 		velocity.y = move_toward(velocity.y, maxGravitation, gravitation * delta)
 
