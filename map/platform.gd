@@ -9,7 +9,7 @@ func _ready() -> void:
 	add_child(timer)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("move_down") and get_tree().get_nodes_in_group("player")[0].position:
+	if Input.is_action_pressed("move_down"):
 		disabled = true
 		timer.wait_time = time
 		timer.start()

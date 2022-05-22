@@ -35,7 +35,7 @@ func set_item(localItem):
 	self.item = localItem;
 	update_display();
 	
-func check_if_mergeable(localItem:Item):
+func check_if_mergeable(localItem: Item):
 	if localItem.stackable and self.item.stackable and (localItem.item_id == self.item.item_id):
 		return true;
 	return false;
@@ -44,7 +44,7 @@ func get_item():
 	return self.item;
 	
 	
-func get_drag_data(position):
+func get_drag_data(_position):
 	if self.item == null:
 		return null;
 		
@@ -54,10 +54,10 @@ func get_drag_data(position):
 	set_drag_preview(drag_preview);
 	return self.item;
 	
-func drop_data(position, data):
+func drop_data(_position, _data):
 	get_parent().notify_parent_on_item_drag_release(self);
 	
-func can_drop_data(position, data):
+func can_drop_data(_position, _data):
 	return true;
 
 

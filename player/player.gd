@@ -24,7 +24,7 @@ func _process(_delta: float) -> void:
 		$Sprite.flip_h = dir < 0
 		$atackbox.set_scale(Vector2(dir, 1))
 
-	if !grounded or $data/move.velocity.y != 0.0:
+	if !grounded:
 		animation.travel("jump")
 	elif dir != 0 and Input.is_action_pressed("walk"):
 		animation.travel("walk")

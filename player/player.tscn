@@ -22,7 +22,7 @@ shader_param/flashColor = Color( 1, 1, 1, 1 )
 shader_param/flash = 0.0
 
 [sub_resource type="CapsuleShape2D" id=64]
-radius = 5.0
+radius = 6.55556
 height = 12.0
 
 [sub_resource type="Animation" id=63]
@@ -628,10 +628,11 @@ tracks/4/keys = {
 [sub_resource type="AnimationNodeStateMachinePlayback" id=60]
 
 [sub_resource type="RectangleShape2D" id=65]
-extents = Vector2( 5, 2 )
+extents = Vector2( 5, 1.66667 )
 
 [node name="player" type="KinematicBody2D" groups=["player"]]
 pause_mode = 2
+scale = Vector2( 0.9, 0.9 )
 z_index = 5
 collision_layer = 8
 script = ExtResource( 2 )
@@ -644,8 +645,11 @@ hframes = 2
 vframes = 2
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2( -1, 1 )
+position = Vector2( -0.211, 0 )
 shape = SubResource( 64 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -1.11111, -12.2222, 5.55556, -12.2222, 5.55556, -10, 0, -10, 0, 10, 5.55556, 10, 5.55556, 12.2222, 0, 12.2222, -2.22222, 12.2222, -6.66667, 12.2222, -6.66667, 10, -1.11111, 10, -1.11111, -10, -6.66667, -10, -6.66667, -12.2222 )
 
 [node name="data" type="Node" parent="."]
 
@@ -686,7 +690,7 @@ collision_layer = 0
 
 [node name="groundSensor" type="CollisionShape2D" parent="groundSensor"]
 self_modulate = Color( 0.054902, 1, 0, 1 )
-position = Vector2( -1, 1 )
+position = Vector2( -1, 0.666667 )
 shape = SubResource( 65 )
 
 [node name="atackbox" type="Area2D" parent="."]
@@ -694,12 +698,9 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="atackbox"]
-position = Vector2( -5.55313, 4 )
+position = Vector2( -5, 4 )
 scale = Vector2( 2.583, 2.813 )
-polygon = PoolVector2Array( 3.87097, -4.97778, 3.87097, 3.91111, -0.387097, 3.91111, -0.387097, -4.97778 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -5, -8, 3, -8, 4, 8, -6, 8 )
+polygon = PoolVector2Array( 3.65639, -4.18691, 3.65639, 2.92294, -0.645245, 2.92294, -0.645245, -4.18691, 1.07541, -4.97689, 1.93573, -4.97689 )
 
 [connection signal="body_entered" from="groundSensor" to="data/move" method="update_grounded"]
 [connection signal="body_exited" from="groundSensor" to="data/move" method="update_grounded"]

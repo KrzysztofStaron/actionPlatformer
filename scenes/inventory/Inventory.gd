@@ -1,6 +1,6 @@
 extends Control
 
-onready var Items = preload("res://scenes/inventory/Items.gd").new();
+onready var Items = load("res://scenes/inventory/Items.gd").new();
 
 
 var gridSource : Control

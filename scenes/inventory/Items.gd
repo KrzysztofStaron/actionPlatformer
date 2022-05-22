@@ -1,6 +1,6 @@
 extends Node
 
-const Item = preload("res://scenes/inventory/Item.gd");
+#const Item = preload("res://scenes/inventory/Item.gd");
 
 class_name Items
 
