@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://player/textures/idle.png" type="Texture" id=1]
 [ext_resource path="res://player/player.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://player/data/atack.gd" type="Script" id=12]
 [ext_resource path="res://player/textures/fall.png" type="Texture" id=13]
 [ext_resource path="res://player/animationState.tres" type="AnimationNodeStateMachine" id=14]
+[ext_resource path="res://player/death.png" type="Texture" id=15]
 [ext_resource path="res://player/textures/airAtack.png" type="Texture" id=16]
 
 [sub_resource type="ShaderMaterial" id=25]
@@ -24,6 +25,24 @@ shader_param/flash = 0.0
 [sub_resource type="CapsuleShape2D" id=64]
 radius = 6.55556
 height = 12.0
+
+[sub_resource type="RectangleShape2D" id=65]
+extents = Vector2( 5, 1.66667 )
+
+[sub_resource type="Animation" id=68]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("death:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=63]
 resource_name = "airSwordAtack"
@@ -191,6 +210,30 @@ tracks/4/keys = {
 "transitions": PoolRealArray(  ),
 "values": [  ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("death:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 128 ]
+}
 
 [sub_resource type="Animation" id=59]
 resource_name = "fall"
@@ -309,6 +352,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("death:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=58]
@@ -627,22 +682,25 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=60]
 
-[sub_resource type="RectangleShape2D" id=65]
-extents = Vector2( 5, 1.66667 )
-
 [node name="player" type="KinematicBody2D" groups=["player"]]
 pause_mode = 2
 scale = Vector2( 0.9, 0.9 )
-z_index = 5
+z_index = 128
 collision_layer = 8
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 25 )
 position = Vector2( 0, 1 )
-texture = ExtResource( 1 )
-hframes = 2
-vframes = 2
+texture = ExtResource( 9 )
+hframes = 5
+vframes = 5
+
+[node name="death" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 2.22222, 7.77778 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 15 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2( -0.211, 0 )
@@ -651,23 +709,26 @@ shape = SubResource( 64 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -1.11111, -12.2222, 5.55556, -12.2222, 5.55556, -10, 0, -10, 0, 10, 5.55556, 10, 5.55556, 12.2222, 0, 12.2222, -2.22222, 12.2222, -6.66667, 12.2222, -6.66667, 10, -1.11111, 10, -1.11111, -10, -6.66667, -10, -6.66667, -12.2222 )
 
-[node name="data" type="Node" parent="."]
+[node name="groundSensor" type="Area2D" parent="."]
+position = Vector2( 0, 11 )
+collision_layer = 0
 
-[node name="atack" type="Node" parent="data"]
-script = ExtResource( 12 )
-atackDamage = 34
-atackRandomines = 4
-knockback = 50.0
+[node name="groundSensor" type="CollisionShape2D" parent="groundSensor"]
+self_modulate = Color( 0.054902, 1, 0, 1 )
+position = Vector2( -1, 0.666667 )
+shape = SubResource( 65 )
 
-[node name="move" type="Node" parent="data"]
-script = ExtResource( 11 )
-maxSpeed = 70.0
-step = 210
-dust = ExtResource( 6 )
-jumpHeight = -170
-speedMultiplayer = 0.2
+[node name="atackbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="atackbox"]
+position = Vector2( -5.55313, 4 )
+scale = Vector2( 2.583, 2.813 )
+polygon = PoolVector2Array( 3.65639, -4.18691, 3.65639, 2.92294, -0.645245, 2.92294, -0.645245, -4.18691, 1.07541, -4.97689, 1.93573, -4.97689 )
 
 [node name="playerAnimations" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 68 )
 anims/airSwordAtack = SubResource( 63 )
 anims/death = SubResource( 52 )
 anims/fall = SubResource( 59 )
@@ -684,23 +745,20 @@ tree_root = ExtResource( 14 )
 anim_player = NodePath("../playerAnimations")
 parameters/playback = SubResource( 60 )
 
-[node name="groundSensor" type="Area2D" parent="."]
-position = Vector2( 0, 11 )
-collision_layer = 0
+[node name="data" type="Node" parent="."]
 
-[node name="groundSensor" type="CollisionShape2D" parent="groundSensor"]
-self_modulate = Color( 0.054902, 1, 0, 1 )
-position = Vector2( -1, 0.666667 )
-shape = SubResource( 65 )
+[node name="atack" type="Node" parent="data"]
+script = ExtResource( 12 )
+atackDamage = 34
+atackRandomines = 4
+knockback = 50.0
 
-[node name="atackbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="atackbox"]
-position = Vector2( -5, 4 )
-scale = Vector2( 2.583, 2.813 )
-polygon = PoolVector2Array( 3.65639, -4.18691, 3.65639, 2.92294, -0.645245, 2.92294, -0.645245, -4.18691, 1.07541, -4.97689, 1.93573, -4.97689 )
+[node name="move" type="Node" parent="data"]
+script = ExtResource( 11 )
+maxSpeed = 70.0
+step = 210
+dust = ExtResource( 6 )
+jumpHeight = -170
 
 [connection signal="body_entered" from="groundSensor" to="data/move" method="update_grounded"]
 [connection signal="body_exited" from="groundSensor" to="data/move" method="update_grounded"]

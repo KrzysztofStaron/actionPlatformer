@@ -31,14 +31,14 @@ polygon = PoolVector2Array( -12, 9, 10, 9, 10, 13, -12, 13 )
 position = Vector2( 92, 98 )
 polygon = PoolVector2Array( -12, 8, 10, 8, 10, 12, -12, 12 )
 
+[node name="dummy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -69, 8 )
+
+[node name="dummy3" parent="." instance=ExtResource( 4 )]
+position = Vector2( -30, -162 )
+
+[node name="slime" parent="." instance=ExtResource( 3 )]
+position = Vector2( -51, -167 )
+
 [node name="dummy" parent="." instance=ExtResource( 4 )]
 position = Vector2( -135, 10 )
-
-[node name="dummy" parent="dummy" instance=ExtResource( 4 )]
-position = Vector2( 66, -2 )
-
-[node name="dummy2" parent="dummy" instance=ExtResource( 4 )]
-position = Vector2( 105, -172 )
-
-[node name="slime" parent="dummy" instance=ExtResource( 3 )]
-position = Vector2( 231, 36 )
