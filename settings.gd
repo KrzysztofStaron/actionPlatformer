@@ -1,4 +1,4 @@
 extends Node
 
-const gravitation := 300
-const maxGravitation := 600
+const gravitation := 400
+const maxGravitation := 800
